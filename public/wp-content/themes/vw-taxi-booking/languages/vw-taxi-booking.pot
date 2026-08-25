@@ -1,0 +1,1693 @@
+# Copyright (C) 2025 VWThemes
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: VW Taxi Booking 1.2.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/vw-taxi-booking\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-09-11T11:32:07+05:30\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: vw-taxi-booking\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "VW Taxi Booking"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://www.vwthemes.com/products/vw-taxi-booking"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Take your taxi business online with the VW Taxi Booking Theme, crafted specifically for cab companies, ride-hailing services, car rental businesses, airport transfers, and private taxi operators while also supporting ecommerce functionality for selling travel passes, corporate ride packages, and online booking services through WooCommerce, making it suitable for modern digital business setups. This responsive and mobile-friendly theme allows you to create a professional website where customers can book taxis online, schedule rides, manage corporate travel, and choose from multiple vehicles effortlessly, helping you scale like other successful online booking platforms. Its clean design and intuitive layout make navigation smooth for users searching for taxi booking, cab booking, airport pickups, and local ride services, while SEO-friendly structure and Yoast SEO compatibility enhance search visibility to attract more clients. Pre-built pages allow you to showcase fleets, driver profiles, fare calculator, instant reservations, and secure online payments, and Contact Form 7 integration ensures efficient customer inquiries and booking confirmations. With real-time availability updates, flexible ride scheduling, speed-optimized performance, and support for page builders for easy customization, the VW Taxi Booking Theme provides a conversion-focused experience ideal for taxi companies, ride-hailing startups, and transportation service providers. Whether offering city rides, corporate transfers, or airport drop-off services, this feature-rich and user-friendly theme helps streamline taxi service management, boost bookings, and build a strong online presence that drives business growth."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "VWThemes"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://www.vwthemes.com/"
+msgstr ""
+
+#: inc/block-patterns.php:33
+msgid "Default header"
+msgstr ""
+
+#: inc/block-patterns.php:38
+msgid "Default footer"
+msgstr ""
+
+#: inc/block-patterns.php:43
+#: inc/block-patterns.php:131
+msgid "Home Slider"
+msgstr ""
+
+#: inc/block-patterns.php:47
+#: inc/block-patterns.php:132
+msgid "Our Taxis Section"
+msgstr ""
+
+#: inc/block-patterns.php:51
+#: inc/block-patterns.php:133
+msgid "Experience Section"
+msgstr ""
+
+#: inc/block-patterns.php:55
+#: inc/block-patterns.php:134
+msgid "Testimonial Section"
+msgstr ""
+
+#: inc/block-patterns.php:59
+#: inc/block-patterns.php:135
+msgid "News Section"
+msgstr ""
+
+#: inc/block-patterns.php:63
+#: inc/block-patterns.php:136
+msgid "FAQ Section"
+msgstr ""
+
+#: inc/block-patterns.php:67
+msgid "Primary Sidebar"
+msgstr ""
+
+#: inc/block-patterns.php:71
+msgid "404 content"
+msgstr ""
+
+#: inc/block-patterns.php:75
+msgid "Post Single Column"
+msgstr ""
+
+#: inc/block-patterns.php:80
+msgid "Post Two Column"
+msgstr ""
+
+#: inc/block-patterns.php:85
+msgid "Post Three Column"
+msgstr ""
+
+#: inc/block-patterns.php:90
+msgid "Post Four Column"
+msgstr ""
+
+#: inc/block-patterns.php:95
+msgid "Feature Post Column"
+msgstr ""
+
+#: inc/block-patterns.php:100
+msgid "Comment Section 1"
+msgstr ""
+
+#: inc/block-patterns.php:104
+msgid "Cover With Post Title"
+msgstr ""
+
+#: inc/block-patterns.php:108
+msgid "Cover With Search Title"
+msgstr ""
+
+#: inc/block-patterns.php:112
+msgid "Cover With Archive Title"
+msgstr ""
+
+#: inc/block-patterns.php:116
+msgid "Cover With Index Title"
+msgstr ""
+
+#: inc/block-patterns.php:120
+msgid "Theme Button"
+msgstr ""
+
+#: inc/block-patterns.php:126
+msgid "Footers"
+msgstr ""
+
+#: inc/block-patterns.php:127
+msgid "Headers"
+msgstr ""
+
+#: inc/block-patterns.php:128
+#: patterns/primary-sidebar.php:27
+msgid "Pages"
+msgstr ""
+
+#: inc/block-patterns.php:129
+msgid "Query"
+msgstr ""
+
+#: inc/block-patterns.php:130
+msgid "Sidebars"
+msgstr ""
+
+#: inc/block-patterns.php:137
+msgid "Comment Sections"
+msgstr ""
+
+#: inc/block-patterns.php:138
+msgid "Theme Button Sections"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:327
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:328
+msgid "Install Plugins"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:330
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:332
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:333
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:334
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:340
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:346
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:352
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:358
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: inc/tgm/class-tgm-plugin-activation.php:364
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:370
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:375
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:380
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:385
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:386
+#: inc/tgm/class-tgm-plugin-activation.php:827
+#: inc/tgm/class-tgm-plugin-activation.php:2533
+#: inc/tgm/class-tgm-plugin-activation.php:3580
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:387
+#: inc/tgm/class-tgm-plugin-activation.php:3159
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:388
+#: inc/tgm/class-tgm-plugin-activation.php:2952
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:390
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:392
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr ""
+
+#. translators: 1: dashboard link.
+#: inc/tgm/class-tgm-plugin-activation.php:394
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:395
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:396
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:397
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:522
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:523
+msgid "Update Required"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:934
+msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:934
+#: inc/tgm/class-tgm-plugin-activation.php:937
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:937
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:1121
+#: inc/tgm/class-tgm-plugin-activation.php:2948
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#. translators: %s: version number
+#: inc/tgm/class-tgm-plugin-activation.php:1982
+msgid "TGMPA v%s"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2273
+msgid "Required"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2276
+msgid "Recommended"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2292
+msgid "WordPress Repository"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2295
+msgid "External Source"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2298
+msgid "Pre-Packaged"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2315
+msgid "Not Installed"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2319
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2321
+msgid "Active"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2327
+msgid "Required Update not Available"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2330
+msgid "Requires Update"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2333
+msgid "Update recommended"
+msgstr ""
+
+#. translators: 1: install status, 2: update status
+#: inc/tgm/class-tgm-plugin-activation.php:2342
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2388
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2392
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2396
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: inc/tgm/class-tgm-plugin-activation.php:2400
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2482
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2490
+msgid "Installed version:"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2498
+msgid "Minimum required version:"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2510
+msgid "Available version:"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2533
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2547
+msgid "Plugin"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2548
+msgid "Source"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2549
+msgid "Type"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2553
+msgid "Version"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2554
+msgid "Status"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2603
+msgid "Install %2$s"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2608
+msgid "Update %2$s"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: inc/tgm/class-tgm-plugin-activation.php:2614
+msgid "Activate %2$s"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2684
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2717
+msgid "Install"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2723
+msgid "Update"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2726
+msgid "Activate"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2757
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2759
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2800
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2802
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2908
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:2934
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3158
+msgid "Plugin activation failed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3498
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#. translators: 1: plugin name, 2: error message.
+#: inc/tgm/class-tgm-plugin-activation.php:3501
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3503
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3507
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3509
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3509
+#: inc/tgm/class-tgm-plugin-activation.php:3517
+msgid "Show Details"
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3509
+#: inc/tgm/class-tgm-plugin-activation.php:3517
+msgid "Hide Details"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3510
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3512
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3515
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: inc/tgm/class-tgm-plugin-activation.php:3517
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: inc/tgm/class-tgm-plugin-activation.php:3518
+msgid "All installations have been completed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: inc/tgm/class-tgm-plugin-activation.php:3520
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/tgm/tgm.php:10
+msgid "E-cab Taxi Booking Manager for Woocommerce"
+msgstr ""
+
+#: inc/tgm/tgm.php:17
+msgid "Currency Switcher for WooCommerce"
+msgstr ""
+
+#: inc/tgm/tgm.php:24
+msgid "GTranslate"
+msgstr ""
+
+#: inc/tgm/tgm.php:31
+msgid "Woocommerce"
+msgstr ""
+
+#: patterns/comment-section-1.php
+msgctxt "Pattern title"
+msgid "Comment Section 1"
+msgstr ""
+
+#: patterns/cover-with-archive-title.php
+msgctxt "Pattern title"
+msgid "Cover With Archive Title"
+msgstr ""
+
+#: patterns/cover-with-index-title.php
+msgctxt "Pattern title"
+msgid "Cover With Index Title"
+msgstr ""
+
+#: patterns/cover-with-index-title.php:11
+msgid "BLOG"
+msgstr ""
+
+#: patterns/cover-with-post-title.php
+msgctxt "Pattern title"
+msgid "Cover With Post Title"
+msgstr ""
+
+#: patterns/cover-with-search-title.php
+msgctxt "Pattern title"
+msgid "Cover With Search Title"
+msgstr ""
+
+#: patterns/experience-section.php
+msgctxt "Pattern title"
+msgid "Experience Section"
+msgstr ""
+
+#: patterns/experience-section.php:24
+#: patterns/footer-default.php:36
+msgid "about us"
+msgstr ""
+
+#: patterns/experience-section.php:28
+msgid "we strive to deliver the most accurate and seamless translation experience."
+msgstr ""
+
+#: patterns/experience-section.php:32
+#: patterns/experience-section.php:46
+#: patterns/experience-section.php:60
+#: patterns/faq-section.php:24
+#: patterns/news-section.php:24
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nisi elit, consequat pharetra elementum nec, eleifend non turpis."
+msgstr ""
+
+#: patterns/experience-section.php:42
+msgid "guaranteed satisfaction"
+msgstr ""
+
+#: patterns/experience-section.php:56
+msgid "subtitling"
+msgstr ""
+
+#: patterns/faq-section.php
+msgctxt "Pattern title"
+msgid "FAQ's Section"
+msgstr ""
+
+#: patterns/faq-section.php:16
+msgid "FAQ’s"
+msgstr ""
+
+#: patterns/faq-section.php:20
+msgid "have any questions for us?"
+msgstr ""
+
+#: patterns/faq-section.php:36
+msgid "how to booking a taxi cap in city tour?"
+msgstr ""
+
+#: patterns/faq-section.php:37
+#: patterns/faq-section.php:43
+#: patterns/faq-section.php:49
+#: patterns/faq-section.php:55
+#: patterns/faq-section.php:63
+#: patterns/faq-section.php:69
+#: patterns/faq-section.php:75
+#: patterns/faq-section.php:81
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since."
+msgstr ""
+
+#: patterns/faq-section.php:42
+msgid "can i schedule a ride in advance?"
+msgstr ""
+
+#: patterns/faq-section.php:48
+msgid "are your fares fixed or metered?"
+msgstr ""
+
+#: patterns/faq-section.php:54
+msgid "what types of vehicles do you offer?"
+msgstr ""
+
+#: patterns/faq-section.php:62
+msgid "how do i know my driver is on the way?"
+msgstr ""
+
+#: patterns/faq-section.php:68
+msgid "what should i do if i left something in the taxi?"
+msgstr ""
+
+#: patterns/faq-section.php:74
+msgid "Is my data and document secure?"
+msgstr ""
+
+#: patterns/faq-section.php:80
+msgid "Can you handle large volume projects?"
+msgstr ""
+
+#: patterns/feature-post-column.php
+msgctxt "Pattern title"
+msgid "Feature Post Column"
+msgstr ""
+
+#: patterns/feature-post-column.php:46
+msgid "Popular News"
+msgstr ""
+
+#: patterns/feature-post-column.php:101
+msgid ""
+"Life Is Either A Daring Adventure Or Nothing At\n"
+"\t\t\t\t\t\t\tAll"
+msgstr ""
+
+#: patterns/feature-post-column.php:151
+msgid "Recent News"
+msgstr ""
+
+#: patterns/footer-default.php
+msgctxt "Pattern title"
+msgid "Footer Default"
+msgstr ""
+
+#: patterns/footer-default.php:15
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tristique justo et justo fringilla mattis. Quisque ullamcorper ligula ac justo faucibus, at pellentesque nunc tincidunt. Proin rutrum viverra mauris, id finibus metus vestibulum in. Etiam vel arcu nisi."
+msgstr ""
+
+#: patterns/footer-default.php:31
+msgid "useful Links"
+msgstr ""
+
+#: patterns/footer-default.php:40
+msgid "service"
+msgstr ""
+
+#: patterns/footer-default.php:44
+msgid "taxis"
+msgstr ""
+
+#: patterns/footer-default.php:48
+msgid "blogs"
+msgstr ""
+
+#: patterns/footer-default.php:52
+#: patterns/home-slider.php:35
+#: patterns/home-slider.php:71
+#: patterns/home-slider.php:107
+msgid "contact us"
+msgstr ""
+
+#: patterns/footer-default.php:59
+msgid "Services"
+msgstr ""
+
+#: patterns/footer-default.php:64
+msgid "airport transfers"
+msgstr ""
+
+#: patterns/footer-default.php:68
+msgid "city rides"
+msgstr ""
+
+#: patterns/footer-default.php:72
+msgid "corporate travel"
+msgstr ""
+
+#: patterns/footer-default.php:76
+msgid "hourly booking"
+msgstr ""
+
+#: patterns/footer-default.php:80
+msgid "luxury chauffeur service"
+msgstr ""
+
+#: patterns/footer-default.php:87
+msgid "Need Help?"
+msgstr ""
+
+#: patterns/footer-default.php:96
+msgid "+123456789123"
+msgstr ""
+
+#: patterns/footer-default.php:101
+msgid "Monday To Saturday : 09.00AM - 08.00PM"
+msgstr ""
+
+#: patterns/footer-default.php:105
+msgid "Sunday Closed"
+msgstr ""
+
+#: patterns/footer-default.php:114
+msgid "xyz123@example.com"
+msgstr ""
+
+#: patterns/footer-default.php:123
+msgid "VW Taxi Booking Theme By VWThemes"
+msgstr ""
+
+#: patterns/header-default.php
+msgctxt "Pattern title"
+msgid "Header Default"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "Hidden 404"
+msgstr ""
+
+#: patterns/hidden-404.php:13
+msgid "Page Not Found"
+msgstr ""
+
+#: patterns/hidden-404.php:17
+msgid "This page could not be found. Maybe try a search?"
+msgstr ""
+
+#: patterns/home-slider.php
+msgctxt "Pattern title"
+msgid "Home Slider"
+msgstr ""
+
+#: patterns/home-slider.php:18
+#: patterns/home-slider.php:54
+#: patterns/home-slider.php:90
+msgid "welcome taxi wordpress theme"
+msgstr ""
+
+#: patterns/home-slider.php:22
+msgid "reliable rides. anytime. anywhere."
+msgstr ""
+
+#: patterns/home-slider.php:26
+#: patterns/home-slider.php:62
+#: patterns/home-slider.php:98
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+msgstr ""
+
+#: patterns/home-slider.php:31
+#: patterns/home-slider.php:67
+#: patterns/home-slider.php:103
+msgid "explore more"
+msgstr ""
+
+#: patterns/home-slider.php:58
+msgid "your ride. your time. your way."
+msgstr ""
+
+#: patterns/home-slider.php:94
+msgid "fast trips. safe journeys. always."
+msgstr ""
+
+#: patterns/home-slider.php:131
+msgid "safety first"
+msgstr ""
+
+#: patterns/home-slider.php:135
+#: patterns/home-slider.php:169
+msgid "Lorem Ipsum is simply dummy text of the printing."
+msgstr ""
+
+#: patterns/home-slider.php:142
+msgid "live tracking"
+msgstr ""
+
+#: patterns/home-slider.php:146
+msgid "emergency button"
+msgstr ""
+
+#: patterns/home-slider.php:150
+msgid "safety vehicle"
+msgstr ""
+
+#: patterns/home-slider.php:165
+msgid "support all payment"
+msgstr ""
+
+#: patterns/home-slider.php:176
+msgid "google pay"
+msgstr ""
+
+#: patterns/home-slider.php:180
+msgid "master card"
+msgstr ""
+
+#: patterns/home-slider.php:184
+msgid "credit card"
+msgstr ""
+
+#: patterns/home-slider.php:188
+msgid "discover"
+msgstr ""
+
+#: patterns/home-slider.php:192
+msgid "PayTM"
+msgstr ""
+
+#: patterns/news-section.php
+msgctxt "Pattern title"
+msgid "News Section"
+msgstr ""
+
+#: patterns/news-section.php:16
+msgid "news & blog"
+msgstr ""
+
+#: patterns/news-section.php:20
+msgid "our latest news & blogs"
+msgstr ""
+
+#: patterns/our-taxis-section.php
+msgctxt "Pattern title"
+msgid "Our Taxis Section"
+msgstr ""
+
+#: patterns/our-taxis-section.php:11
+msgid "our taxis"
+msgstr ""
+
+#: patterns/our-taxis-section.php:15
+msgid "let’s check available taxis"
+msgstr ""
+
+#: patterns/our-taxis-section.php:19
+#: patterns/testimonial-section.php:25
+msgid "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+msgstr ""
+
+#: patterns/our-taxis-section.php:24
+msgid "all taxis"
+msgstr ""
+
+#: patterns/our-taxis-section.php:28
+msgid "sedan taxis"
+msgstr ""
+
+#: patterns/our-taxis-section.php:32
+msgid "SUV taxis"
+msgstr ""
+
+#: patterns/our-taxis-section.php:36
+msgid "minivan taxis"
+msgstr ""
+
+#: patterns/our-taxis-section.php:40
+msgid "EV taxis"
+msgstr ""
+
+#: patterns/our-taxis-section.php:44
+msgid "luxury taxis"
+msgstr ""
+
+#: patterns/our-taxis-section.php:58
+msgid "BMW T2 2023"
+msgstr ""
+
+#: patterns/our-taxis-section.php:63
+#: patterns/our-taxis-section.php:121
+#: patterns/our-taxis-section.php:179
+#: patterns/our-taxis-section.php:239
+#: patterns/our-taxis-section.php:297
+#: patterns/our-taxis-section.php:355
+#: patterns/our-taxis-section.php:415
+#: patterns/our-taxis-section.php:473
+#: patterns/our-taxis-section.php:531
+#: patterns/our-taxis-section.php:591
+#: patterns/our-taxis-section.php:649
+#: patterns/our-taxis-section.php:707
+#: patterns/our-taxis-section.php:767
+#: patterns/our-taxis-section.php:825
+#: patterns/our-taxis-section.php:883
+#: patterns/our-taxis-section.php:943
+#: patterns/our-taxis-section.php:1001
+#: patterns/our-taxis-section.php:1059
+msgid "$0.75"
+msgstr ""
+
+#: patterns/our-taxis-section.php:67
+#: patterns/our-taxis-section.php:125
+#: patterns/our-taxis-section.php:183
+#: patterns/our-taxis-section.php:243
+#: patterns/our-taxis-section.php:301
+#: patterns/our-taxis-section.php:359
+#: patterns/our-taxis-section.php:419
+#: patterns/our-taxis-section.php:477
+#: patterns/our-taxis-section.php:535
+#: patterns/our-taxis-section.php:595
+#: patterns/our-taxis-section.php:653
+#: patterns/our-taxis-section.php:711
+#: patterns/our-taxis-section.php:771
+#: patterns/our-taxis-section.php:829
+#: patterns/our-taxis-section.php:887
+#: patterns/our-taxis-section.php:947
+#: patterns/our-taxis-section.php:1005
+#: patterns/our-taxis-section.php:1063
+msgid "/km"
+msgstr ""
+
+#: patterns/our-taxis-section.php:73
+#: patterns/our-taxis-section.php:131
+#: patterns/our-taxis-section.php:189
+#: patterns/our-taxis-section.php:249
+#: patterns/our-taxis-section.php:307
+#: patterns/our-taxis-section.php:365
+#: patterns/our-taxis-section.php:425
+#: patterns/our-taxis-section.php:483
+#: patterns/our-taxis-section.php:541
+#: patterns/our-taxis-section.php:601
+#: patterns/our-taxis-section.php:659
+#: patterns/our-taxis-section.php:717
+#: patterns/our-taxis-section.php:777
+#: patterns/our-taxis-section.php:835
+#: patterns/our-taxis-section.php:893
+#: patterns/our-taxis-section.php:953
+#: patterns/our-taxis-section.php:1011
+#: patterns/our-taxis-section.php:1069
+msgid "passenger seats"
+msgstr ""
+
+#: patterns/our-taxis-section.php:77
+#: patterns/our-taxis-section.php:135
+#: patterns/our-taxis-section.php:193
+#: patterns/our-taxis-section.php:253
+#: patterns/our-taxis-section.php:311
+#: patterns/our-taxis-section.php:369
+#: patterns/our-taxis-section.php:429
+#: patterns/our-taxis-section.php:487
+#: patterns/our-taxis-section.php:545
+#: patterns/our-taxis-section.php:605
+#: patterns/our-taxis-section.php:663
+#: patterns/our-taxis-section.php:721
+#: patterns/our-taxis-section.php:781
+#: patterns/our-taxis-section.php:839
+#: patterns/our-taxis-section.php:897
+#: patterns/our-taxis-section.php:957
+#: patterns/our-taxis-section.php:1015
+#: patterns/our-taxis-section.php:1073
+msgid "04"
+msgstr ""
+
+#: patterns/our-taxis-section.php:83
+#: patterns/our-taxis-section.php:141
+#: patterns/our-taxis-section.php:199
+#: patterns/our-taxis-section.php:259
+#: patterns/our-taxis-section.php:317
+#: patterns/our-taxis-section.php:375
+#: patterns/our-taxis-section.php:435
+#: patterns/our-taxis-section.php:493
+#: patterns/our-taxis-section.php:551
+#: patterns/our-taxis-section.php:611
+#: patterns/our-taxis-section.php:669
+#: patterns/our-taxis-section.php:727
+#: patterns/our-taxis-section.php:787
+#: patterns/our-taxis-section.php:845
+#: patterns/our-taxis-section.php:903
+#: patterns/our-taxis-section.php:963
+#: patterns/our-taxis-section.php:1021
+#: patterns/our-taxis-section.php:1079
+msgid "additional charge/km"
+msgstr ""
+
+#: patterns/our-taxis-section.php:87
+#: patterns/our-taxis-section.php:145
+#: patterns/our-taxis-section.php:203
+#: patterns/our-taxis-section.php:263
+#: patterns/our-taxis-section.php:321
+#: patterns/our-taxis-section.php:379
+#: patterns/our-taxis-section.php:439
+#: patterns/our-taxis-section.php:497
+#: patterns/our-taxis-section.php:555
+#: patterns/our-taxis-section.php:615
+#: patterns/our-taxis-section.php:673
+#: patterns/our-taxis-section.php:731
+#: patterns/our-taxis-section.php:791
+#: patterns/our-taxis-section.php:849
+#: patterns/our-taxis-section.php:907
+#: patterns/our-taxis-section.php:967
+#: patterns/our-taxis-section.php:1025
+#: patterns/our-taxis-section.php:1083
+msgid "$0.5"
+msgstr ""
+
+#: patterns/our-taxis-section.php:93
+#: patterns/our-taxis-section.php:151
+#: patterns/our-taxis-section.php:209
+#: patterns/our-taxis-section.php:269
+#: patterns/our-taxis-section.php:327
+#: patterns/our-taxis-section.php:385
+#: patterns/our-taxis-section.php:445
+#: patterns/our-taxis-section.php:503
+#: patterns/our-taxis-section.php:561
+#: patterns/our-taxis-section.php:621
+#: patterns/our-taxis-section.php:679
+#: patterns/our-taxis-section.php:737
+#: patterns/our-taxis-section.php:797
+#: patterns/our-taxis-section.php:855
+#: patterns/our-taxis-section.php:913
+#: patterns/our-taxis-section.php:973
+#: patterns/our-taxis-section.php:1031
+#: patterns/our-taxis-section.php:1089
+msgid "additional passenger"
+msgstr ""
+
+#: patterns/our-taxis-section.php:97
+#: patterns/our-taxis-section.php:155
+#: patterns/our-taxis-section.php:213
+#: patterns/our-taxis-section.php:273
+#: patterns/our-taxis-section.php:331
+#: patterns/our-taxis-section.php:389
+#: patterns/our-taxis-section.php:449
+#: patterns/our-taxis-section.php:507
+#: patterns/our-taxis-section.php:565
+#: patterns/our-taxis-section.php:625
+#: patterns/our-taxis-section.php:683
+#: patterns/our-taxis-section.php:741
+#: patterns/our-taxis-section.php:801
+#: patterns/our-taxis-section.php:859
+#: patterns/our-taxis-section.php:917
+#: patterns/our-taxis-section.php:977
+#: patterns/our-taxis-section.php:1035
+#: patterns/our-taxis-section.php:1093
+msgid "$0.6"
+msgstr ""
+
+#: patterns/our-taxis-section.php:103
+#: patterns/our-taxis-section.php:161
+#: patterns/our-taxis-section.php:219
+#: patterns/our-taxis-section.php:279
+#: patterns/our-taxis-section.php:337
+#: patterns/our-taxis-section.php:395
+#: patterns/our-taxis-section.php:455
+#: patterns/our-taxis-section.php:513
+#: patterns/our-taxis-section.php:571
+#: patterns/our-taxis-section.php:631
+#: patterns/our-taxis-section.php:689
+#: patterns/our-taxis-section.php:747
+#: patterns/our-taxis-section.php:807
+#: patterns/our-taxis-section.php:865
+#: patterns/our-taxis-section.php:923
+#: patterns/our-taxis-section.php:983
+#: patterns/our-taxis-section.php:1041
+#: patterns/our-taxis-section.php:1099
+msgid "book now"
+msgstr ""
+
+#: patterns/our-taxis-section.php:116
+msgid "Honda Verna 2.0"
+msgstr ""
+
+#: patterns/our-taxis-section.php:174
+msgid "harrier EV Model 2024"
+msgstr ""
+
+#: patterns/our-taxis-section.php:234
+#: patterns/our-taxis-section.php:878
+msgid "Hyundai Ioniq 6 EV"
+msgstr ""
+
+#: patterns/our-taxis-section.php:292
+msgid "Kia EV9"
+msgstr ""
+
+#: patterns/our-taxis-section.php:350
+#: patterns/our-taxis-section.php:996
+msgid "MG ZS EV"
+msgstr ""
+
+#: patterns/our-taxis-section.php:410
+msgid "BYD e6"
+msgstr ""
+
+#: patterns/our-taxis-section.php:468
+msgid "Toyota Innova HyCross Hybrid"
+msgstr ""
+
+#: patterns/our-taxis-section.php:526
+#: patterns/our-taxis-section.php:820
+msgid "Mahindra XUV400 EV"
+msgstr ""
+
+#: patterns/our-taxis-section.php:586
+msgid "Tata Nexon EV Facelift"
+msgstr ""
+
+#: patterns/our-taxis-section.php:644
+#: patterns/our-taxis-section.php:938
+msgid "Skoda Enyaq iV"
+msgstr ""
+
+#: patterns/our-taxis-section.php:702
+msgid "Mercedes-Benz EQB"
+msgstr ""
+
+#: patterns/our-taxis-section.php:762
+#: patterns/our-taxis-section.php:1054
+msgid "Toyota Corolla Hybrid"
+msgstr ""
+
+#: patterns/post-content-1.php
+msgctxt "Pattern title"
+msgid "Post Content 1"
+msgstr ""
+
+#: patterns/post-listing-four-column.php
+msgctxt "Pattern title"
+msgid "Post Listing Four Column"
+msgstr ""
+
+#: patterns/post-listing-single-column.php
+msgctxt "Pattern title"
+msgid "Post Listing Single Column"
+msgstr ""
+
+#: patterns/post-listing-three-column.php
+msgctxt "Pattern title"
+msgid "Post Listing Three Column"
+msgstr ""
+
+#: patterns/post-listing-two-column.php
+msgctxt "Pattern title"
+msgid "Post Listing Two Column"
+msgstr ""
+
+#: patterns/primary-sidebar.php
+msgctxt "Pattern title"
+msgid "Primary Sidebar"
+msgstr ""
+
+#: patterns/primary-sidebar.php:11
+msgid "Search"
+msgstr ""
+
+#: patterns/primary-sidebar.php:19
+msgid "Archive"
+msgstr ""
+
+#: patterns/primary-sidebar.php:35
+msgid "Tags"
+msgstr ""
+
+#: patterns/primary-sidebar.php:43
+msgid "Recent Posts"
+msgstr ""
+
+#: patterns/primary-sidebar.php:51
+msgid "Social Media"
+msgstr ""
+
+#: patterns/product-sidebar.php
+msgctxt "Pattern title"
+msgid "Product Sidebar"
+msgstr ""
+
+#: patterns/product-sidebar.php:11
+msgid "Filter by price"
+msgstr ""
+
+#: patterns/product-sidebar.php:21
+msgid "Categories"
+msgstr ""
+
+#: patterns/product-sidebar.php:29
+msgid "Active filters"
+msgstr ""
+
+#: patterns/product-sidebar.php:39
+msgid "Filter by stock status"
+msgstr ""
+
+#: patterns/product-sidebar.php:49
+msgid "Filter by attribute"
+msgstr ""
+
+#: patterns/product-sidebar.php:59
+msgid "Filter by rating"
+msgstr ""
+
+#: patterns/shop-title-cover.php
+msgctxt "Pattern title"
+msgid "Shop Title Cover"
+msgstr ""
+
+#: patterns/shop-title-cover.php:11
+msgid "Shop"
+msgstr ""
+
+#: patterns/testimonial-section.php
+msgctxt "Pattern title"
+msgid "Testimonial Section"
+msgstr ""
+
+#: patterns/testimonial-section.php:17
+msgid "testimonials"
+msgstr ""
+
+#: patterns/testimonial-section.php:21
+msgid "what our customers are saying"
+msgstr ""
+
+#: patterns/testimonial-section.php:38
+#: patterns/testimonial-section.php:58
+#: patterns/testimonial-section.php:78
+#: patterns/testimonial-section.php:98
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lobortis laoreet ante, ut rutrum felis tincidunt vel. Proin tellus magna, malesuada sit amet justo non, interdum congue tortor. Donec volutpat sollicitudin urna consequat luctus."
+msgstr ""
+
+#: patterns/testimonial-section.php:42
+msgid "ruth polina"
+msgstr ""
+
+#: patterns/testimonial-section.php:46
+msgid "sales associate"
+msgstr ""
+
+#: patterns/testimonial-section.php:62
+msgid "john wick"
+msgstr ""
+
+#: patterns/testimonial-section.php:66
+msgid "retail specialist"
+msgstr ""
+
+#: patterns/testimonial-section.php:82
+msgid "sophia james"
+msgstr ""
+
+#: patterns/testimonial-section.php:86
+msgid "studio executive"
+msgstr ""
+
+#: patterns/testimonial-section.php:102
+msgid "Liam Alexander"
+msgstr ""
+
+#: patterns/testimonial-section.php:106
+msgid "Business Analyst"
+msgstr ""
+
+#: patterns/theme-button.php
+msgctxt "Pattern title"
+msgid "Theme Button"
+msgstr ""
+
+#: patterns/theme-button.php:10
+msgid "READ MORE"
+msgstr ""
+
+#: styles/green.json
+msgctxt "Style variation name"
+msgid "Green"
+msgstr ""
+
+#: styles/green.json
+#: styles/light-indigo.json
+#: styles/light-orange.json
+#: styles/lime-green.json
+#: styles/pinkish-red.json
+#: styles/sky-blue.json
+#: styles/violet-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: styles/green.json
+#: styles/light-indigo.json
+#: styles/light-orange.json
+#: styles/lime-green.json
+#: styles/pinkish-red.json
+#: styles/sky-blue.json
+#: styles/violet-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr ""
+
+#: styles/green.json
+#: styles/light-indigo.json
+#: styles/light-orange.json
+#: styles/lime-green.json
+#: styles/pinkish-red.json
+#: styles/sky-blue.json
+#: styles/violet-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Section Background"
+msgstr ""
+
+#: styles/green.json
+#: styles/light-indigo.json
+#: styles/light-orange.json
+#: styles/lime-green.json
+#: styles/pinkish-red.json
+#: styles/sky-blue.json
+#: styles/violet-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Foreground"
+msgstr ""
+
+#: styles/green.json
+#: styles/light-indigo.json
+#: styles/light-orange.json
+#: styles/lime-green.json
+#: styles/pinkish-red.json
+#: styles/sky-blue.json
+#: styles/violet-purple.json
+#: theme.json
+msgctxt "Color name"
+msgid "Background"
+msgstr ""
+
+#: styles/light-indigo.json
+msgctxt "Style variation name"
+msgid "Light Indigo"
+msgstr ""
+
+#: styles/light-orange.json
+msgctxt "Style variation name"
+msgid "Light Orange"
+msgstr ""
+
+#: styles/lime-green.json
+msgctxt "Style variation name"
+msgid "Lime Green"
+msgstr ""
+
+#: styles/pinkish-red.json
+msgctxt "Style variation name"
+msgid "Pinkish Red"
+msgstr ""
+
+#: styles/sky-blue.json
+msgctxt "Style variation name"
+msgid "Sky Blue"
+msgstr ""
+
+#: styles/violet-purple.json
+msgctxt "Style variation name"
+msgid "Violet Purple"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Blank"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page (No Title / Feature Image)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Blog Page (Sidebar on Left)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Blog Page (Sidebar on Right)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Page (Sidebar on Right)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Page (Sidebar on Left)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Post (Sidebar on Right)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Single Post (Sidebar on Left)"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Foreground and background"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Foreground and secondary"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Foreground and tertiary"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Primary and background"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Primary and secondary"
+msgstr ""
+
+#: theme.json
+msgctxt "Duotone name"
+msgid "Primary and tertiary"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Button Color"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical secondary to tertiary"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical secondary to background"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Vertical background to secondary"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Secondary background to Secondary dark background"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Secondary background dark to Secondary  background"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal primary to foreground"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal secondary to background"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal secondary to background left"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal secondary to background right"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal background to secondary"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal tertiary to background"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Diagonal background to tertiary"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "6"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "7"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Bad Script"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Manrope"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Mulish"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Outfit"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Tiny"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Upper Heading"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Normal"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Content Heading"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra large (Recent Post Title)"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Huge (Display)"
+msgstr ""
