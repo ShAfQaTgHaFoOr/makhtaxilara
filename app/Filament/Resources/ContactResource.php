@@ -8,7 +8,6 @@ use App\Models\Contact;
 use App\Models\Vehicle;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Infolists;
 use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
@@ -43,6 +42,11 @@ class ContactResource extends Resource
     public static function getNavigationBadgeColor(): ?string
     {
         return 'danger';
+    }
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->canAccessResource('queries') ?? false;
     }
 
     public static function form(Form $form): Form
@@ -181,21 +185,11 @@ class ContactResource extends Resource
                 ->options(Vehicle::where('is_active', true)->orderBy('sort_order')->pluck('name', 'id'))
                 ->searchable()
                 ->required(),
-            Forms\Components\Select::make('trip_type')
-                ->options(['distance' => 'Distance', 'hourly' => 'Hourly', 'fixed' => 'Fixed'])
-                ->default('distance')
-                ->required()
-                ->live(),
-            Forms\Components\TextInput::make('pickup_location')->required()->maxLength(200),
-            Forms\Components\TextInput::make('dropoff_location')->maxLength(200),
+            Forms\Components\TextInput::make('pickup_location')->label('Arrival (flight & time)')->maxLength(200),
+            Forms\Components\TextInput::make('dropoff_location')->label('Departure (flight & time)')->maxLength(200),
             Forms\Components\DateTimePicker::make('pickup_at')
+                ->label('Booking date & time')
                 ->required()->seconds(false)->native(false),
-            Forms\Components\TextInput::make('distance_km')
-                ->numeric()->minValue(0)->suffix('km')
-                ->visible(fn (Get $get) => $get('trip_type') === 'distance'),
-            Forms\Components\TextInput::make('hours')
-                ->numeric()->minValue(1)
-                ->visible(fn (Get $get) => $get('trip_type') === 'hourly'),
             Forms\Components\TextInput::make('passengers')
                 ->numeric()->minValue(1)->default(1)->required(),
             Forms\Components\Textarea::make('notes')->rows(3)->columnSpanFull(),
@@ -212,19 +206,13 @@ class ContactResource extends Resource
             'email'            => $record->email,
             'phone'            => $record->phone ?: 'N/A',
             'vehicle_id'       => $vehicle->id,
-            'trip_type'        => $data['trip_type'],
-            'pickup_location'  => $data['pickup_location'],
+            'trip_type'        => 'fixed',
+            'pickup_location'  => $data['pickup_location'] ?? null,
             'dropoff_location' => $data['dropoff_location'] ?? null,
             'pickup_at'        => $data['pickup_at'],
-            'distance_km'      => $data['distance_km'] ?? null,
-            'hours'            => $data['hours'] ?? null,
             'passengers'       => $data['passengers'],
             'notes'            => $data['notes'] ?? null,
-            'fare_amount'      => $vehicle->estimateFare(
-                $data['trip_type'],
-                $data['distance_km'] ?? null,
-                $data['hours'] ?? null,
-            ),
+            'fare_amount'      => $vehicle->estimateFare('fixed'),
             'status'           => 'confirmed',
             'payment_status'   => 'unpaid',
         ]);

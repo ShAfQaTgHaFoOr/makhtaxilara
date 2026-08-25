@@ -23,6 +23,11 @@ class Vehicle extends Model
         return $this->hasMany(Booking::class);
     }
 
+    public function drivers()
+    {
+        return $this->hasMany(Driver::class);
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';

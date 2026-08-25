@@ -153,6 +153,8 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 @font-face{font-family:Outfit;font-style:Black;font-weight:900;font-display:block;src:url('/wp-content/themes/vw-taxi-booking/fonts/Outfit/static/Outfit-Black.ttf') format('truetype');font-stretch:normal;}
 </style>
 @endverbatim
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
 <link rel="stylesheet" href="/assets/site.css?v=2">
 @stack('styles')
 @verbatim
@@ -236,7 +238,7 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 
 <div class="wp-block-column is-vertically-aligned-center header-middle-box is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:12%">
-<div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-398d4ecf wp-block-group-is-layout-constrained"><h1 style="font-size:18px;font-style:normal;font-weight:800;text-transform:uppercase;" class="has-text-align-center has-link-color header-title wp-elements-99178442a1285fb70a3298188b34836f wp-block-site-title has-text-color has-heading-color-color has-inter-font-family"><a href="/" target="_self" rel="home" aria-current="page">makhah taxi</a></h1></div>
+<div class="wp-block-group is-layout-constrained wp-container-core-group-is-layout-398d4ecf wp-block-group-is-layout-constrained"><h1 style="font-size:18px;font-style:normal;font-weight:800;text-transform:uppercase;" class="has-text-align-center has-link-color header-title wp-elements-99178442a1285fb70a3298188b34836f wp-block-site-title has-text-color has-heading-color-color has-inter-font-family"><a href="/" target="_self" rel="home" aria-current="page"><img src="/logo.png" alt="Makhah Taxi" style="height:64px;width:auto;max-width:100%;display:block;margin:0 auto"></a></h1></div>
 </div>
 
 
@@ -288,7 +290,7 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 <div class="wp-block-group footer-section has-foreground-background-color has-background is-layout-constrained wp-container-core-group-is-layout-4f9f0532 wp-block-group-is-layout-constrained">
 <div class="wp-block-group is-layout-flow wp-block-group-is-layout-flow">
 <div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-28f84493 wp-block-columns-is-layout-flex">
-<div class="wp-block-column is-vertically-aligned-top footer-box is-layout-flow wp-block-column-is-layout-flow" style="padding-right:var(--wp--preset--spacing--70);flex-basis:30%"><h1 style="font-size:27px;" class="has-link-color wp-elements-23f8b6122df1f66badf7287b3c4015f0 wp-block-site-title has-text-color has-primary-color has-outfit-font-family"><a href="/" target="_self" rel="home" aria-current="page">makhah taxi</a></h1>
+<div class="wp-block-column is-vertically-aligned-top footer-box is-layout-flow wp-block-column-is-layout-flow" style="padding-right:var(--wp--preset--spacing--70);flex-basis:30%"><h1 style="font-size:27px;" class="has-link-color wp-elements-23f8b6122df1f66badf7287b3c4015f0 wp-block-site-title has-text-color has-primary-color has-outfit-font-family"><a href="/" target="_self" rel="home" aria-current="page"><img src="/logo.png" alt="Makhah Taxi" style="height:90px;width:auto;max-width:100%;display:block"></a></h1>
 
 
 <p class="footer-para has-background-color has-text-color has-link-color has-extra-small-font-size wp-elements-07712f1a6c78dfc19f2af7c07d3b3d45" style="margin-top:var(--wp--preset--spacing--60)">Your premium choice for urban travel. At Makhah Taxi, we combine safety, speed, and affordability to give you the best ride experience possible. Book your next journey with us and travel in style and peace of mind.</p>

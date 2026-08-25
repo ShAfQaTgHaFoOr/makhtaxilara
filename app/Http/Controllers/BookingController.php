@@ -44,9 +44,9 @@ class BookingController extends Controller
         $data = $request->validate([
             'vehicle_id'       => ['required', 'exists:vehicles,id'],
             'name'             => ['required', 'string', 'max:120'],
-            'email'            => ['required', 'email', 'max:160'],
+            'email'            => ['nullable', 'email', 'max:160'],
             'phone'            => ['required', 'string', 'max:40'],
-            'trip_type'        => ['required', 'in:distance,hourly,fixed'],
+            'trip_type'        => ['nullable', 'in:distance,hourly,fixed'],
             'pickup_location'  => ['required', 'string', 'max:200'],
             'dropoff_location' => ['nullable', 'string', 'max:200'],
             'pickup_at'        => ['required', 'date', 'after:now'],
@@ -56,6 +56,7 @@ class BookingController extends Controller
             'notes'            => ['nullable', 'string', 'max:2000'],
         ]);
 
+        $data['trip_type'] = $data['trip_type'] ?? 'fixed';
         $vehicle = Vehicle::findOrFail($data['vehicle_id']);
         $data['fare_amount'] = $vehicle->estimateFare(
             $data['trip_type'],

@@ -17,7 +17,14 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document';
+
+    protected static ?string $navigationGroup = 'Content';
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->canAccessResource('content') ?? false;
+    }
 
     public static function form(Form $form): Form
     {

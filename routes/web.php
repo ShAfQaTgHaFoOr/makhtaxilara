@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,8 @@ Route::post('/booking/estimate', [BookingController::class, 'estimate'])->name('
 Route::get('/booking/confirmation/{booking_no}', [BookingController::class, 'confirmation'])->name('booking.confirmation');
 Route::get('/booking/{booking_no}/pay', [PaymentController::class, 'checkout'])->name('payment.checkout');
 Route::get('/booking/{booking_no}/paid', [PaymentController::class, 'success'])->name('payment.success');
+Route::get('/booking/{booking_no}/invoice', [InvoiceController::class, 'show'])->name('booking.invoice');
+Route::get('/booking/{booking_no}/invoice/download', [InvoiceController::class, 'download'])->name('booking.invoice.download');
 
 // Blog
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');

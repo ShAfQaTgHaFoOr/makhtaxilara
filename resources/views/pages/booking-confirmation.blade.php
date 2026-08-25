@@ -16,7 +16,6 @@
 
                     <div class="mkt-summary">
                         <div class="mkt-fare__row"><span>Vehicle</span><b>{{ $booking->vehicle?->name ?? '—' }}</b></div>
-                        <div class="mkt-fare__row"><span>Trip type</span><b>{{ ucfirst($booking->trip_type) }}</b></div>
                         <div class="mkt-fare__row"><span>Pickup</span><b>{{ $booking->pickup_location }}</b></div>
                         @if ($booking->dropoff_location)
                             <div class="mkt-fare__row"><span>Drop-off</span><b>{{ $booking->dropoff_location }}</b></div>
