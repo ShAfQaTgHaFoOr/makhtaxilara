@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\RoutePackage;
+use App\Models\TourPackage;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
@@ -13,8 +15,10 @@ class PageController extends Controller
     public function home()
     {
         $vehicles = Vehicle::where('is_active', true)->orderBy('sort_order')->get();
+        $routes = RoutePackage::where('is_active', true)->orderBy('sort_order')->get();
+        $packages = TourPackage::where('is_active', true)->orderBy('sort_order')->get();
 
-        return view('pages.home', compact('vehicles'));
+        return view('pages.home', compact('vehicles', 'routes', 'packages'));
     }
 
     public function fleet()
@@ -71,6 +75,7 @@ class PageController extends Controller
             'message' => ['required', 'string', 'max:5000'],
         ]);
 
+        $data['source'] = 'contact';
         Contact::create($data);
 
         return back()->with('status', 'Thank you! Your message has been sent.');

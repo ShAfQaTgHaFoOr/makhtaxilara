@@ -386,123 +386,36 @@
 
 <h2 class="section-heading">Our <span>Premium</span> Fleet</h2>
 
+@endverbatim
 <div class="car-grid">
-
- <!-- CARD 1: Camry -->
+@forelse($vehicles as $vehicle)
   <div class="car-card">
     <div class="card-img-wrapper">
-        <span class="car-badge">Sedan</span>
-        <img decoding="async" src="/wp-uploads/2025/11/car-6.png" alt="Camry">
+        @if($vehicle->per_km > 0)
+        <span class="car-badge">${{ number_format($vehicle->per_km, 2) }}/km</span>
+        @elseif($vehicle->base_fare > 0)
+        <span class="car-badge">From ${{ number_format($vehicle->base_fare, 0) }}</span>
+        @endif
+        <img decoding="async" src="{{ $vehicle->image ?: '/wp-uploads/2025/11/car-6.png' }}" alt="{{ $vehicle->name }}">
     </div>
     <div class="card-content">
-        <div class="car-title">Camry Car</div>
-        <span class="car-model">New Model • Automatic</span>
+        <div class="car-title">{{ $vehicle->name }}</div>
+        <span class="car-model">{{ $vehicle->excerpt ?: 'Premium ride' }}</span>
         <div class="specs-grid">
-            <div class="spec-item"><i class="fa-solid fa-user-group"></i><span>4 Seats</span></div>
-            <div class="spec-item"><i class="fa-solid fa-suitcase"></i><span>2 Bags + 2 Carry</span></div>
-            <div class="spec-item"><i class="fa-solid fa-snowflake"></i><span>A/C</span></div>
-            <div class="spec-item"><i class="fa-solid fa-gear"></i><span>Auto</span></div>
+            <div class="spec-item"><i class="fa-solid fa-user-group"></i><span>{{ $vehicle->passengers }} Seats</span></div>
+            <div class="spec-item"><i class="fa-solid fa-suitcase"></i><span>{{ $vehicle->luggage }} Bags</span></div>
+            @foreach(array_slice($vehicle->features ?? [], 0, 2) as $feature)
+            <div class="spec-item"><i class="fa-solid fa-check"></i><span>{{ $feature }}</span></div>
+            @endforeach
         </div>
-        <a class="book-btn" href="/index.php/camry-cars/">View Details</a>
+        <a class="book-btn" href="{{ route('vehicle.show', $vehicle) }}">View Details</a>
     </div>
   </div>
-
- <!-- CARD 2: Coaster -->
-  <div class="car-card">
-    <div class="card-img-wrapper">
-        <span class="car-badge">Bus</span>
-        <img decoding="async" src="/wp-uploads/2025/11/pic-5.png" alt="Coaster">
-    </div>
-    <div class="card-content">
-        <div class="car-title">Coaster Saloon</div>
-        <span class="car-model">New Model • Automatic</span>
-        <div class="specs-grid">
-            <div class="spec-item"><i class="fa-solid fa-user-group"></i><span>17 Seats</span></div>
-            <div class="spec-item"><i class="fa-solid fa-suitcase"></i><span>17 Bags + 13 Carry</span></div>
-            <div class="spec-item"><i class="fa-solid fa-snowflake"></i><span>Dual A/C</span></div>
-            <div class="spec-item"><i class="fa-solid fa-door-open"></i><span>Auto Door</span></div>
-        </div>
-        <a class="book-btn" href="/index.php/coaster-saloon-5c/">View Details</a>
-    </div>
-  </div>
-
-  <!-- CARD 3: Staria -->
-  <div class="car-card">
-    <div class="card-img-wrapper">
-        <span class="car-badge">MPV</span>
-        <img decoding="async" src="/wp-uploads/2025/11/car-1.png" alt="Staria">
-    </div>
-    <div class="card-content">
-        <div class="car-title">Hyundai Staria</div>
-        <span class="car-model">New Model • Automatic</span>
-        <div class="specs-grid">
-            <div class="spec-item"><i class="fa-solid fa-user-group"></i><span>7 Seats</span></div>
-            <div class="spec-item"><i class="fa-solid fa-suitcase"></i><span>5 Bags + 5 Carry</span></div>
-            <div class="spec-item"><i class="fa-solid fa-snowflake"></i><span>Climate Ctrl</span></div>
-            <div class="spec-item"><i class="fa-solid fa-wifi"></i><span>Wi-Fi</span></div>
-        </div>
-        <a class="book-btn" href="/index.php/hyundai-staria/">View Details</a>
-    </div>
-  </div>
-
- <!-- CARD 4: GMC -->
-  <div class="car-card">
-    <div class="card-img-wrapper">
-        <span class="car-badge">SUV</span>
-        <img decoding="async" src="/wp-uploads/2025/11/pic-3.png" alt="GMC">
-    </div>
-    <div class="card-content">
-        <div class="car-title">GMC Yukon XL</div>
-        <span class="car-model">2024 Model • Luxury</span>
-        <div class="specs-grid">
-            <div class="spec-item"><i class="fa-solid fa-user-group"></i><span>7 Seats</span></div>
-            <div class="spec-item"><i class="fa-solid fa-suitcase"></i><span>4 Bags + 3 Carry</span></div>
-            <div class="spec-item"><i class="fa-solid fa-snowflake"></i><span>Rear A/C</span></div>
-            <div class="spec-item"><i class="fa-solid fa-star"></i><span>Premium</span></div>
-        </div>
-        <a class="book-btn" href="/index.php/gmc-yukon-xl-2024/">View Details</a>
-    </div>
-  </div>
-  
-  <!-- CARD 5: Hiace -->
-  <div class="car-card">
-    <div class="card-img-wrapper">
-        <span class="car-badge">Van</span>
-        <img decoding="async" src="/wp-uploads/2025/11/car-2.png" alt="Hiace">
-    </div>
-    <div class="card-content">
-        <div class="car-title">Toyota Hiace</div>
-        <span class="car-model">New Model • Automatic</span>
-        <div class="specs-grid">
-            <div class="spec-item"><i class="fa-solid fa-user-group"></i><span>11 Seats</span></div>
-            <div class="spec-item"><i class="fa-solid fa-suitcase"></i><span>10 Bags + 8 Carry</span></div>
-            <div class="spec-item"><i class="fa-solid fa-snowflake"></i><span>A/C</span></div>
-            <div class="spec-item"><i class="fa-solid fa-route"></i><span>Spacious</span></div>
-        </div>
-        <a class="book-btn" href="/index.php/toyota-hiace/">View Details</a>
-    </div>
-  </div>
-
-<!-- CARD 6: Luxury Bus -->
-  <div class="car-card">
-    <div class="card-img-wrapper">
-        <span class="car-badge">Bus</span>
-        <img decoding="async" src="/wp-uploads/2025/12/luxury-bus.png" alt="Luxury Bus">
-    </div>
-    <div class="card-content">
-        <div class="car-title">Luxury Bus</div>
-        <span class="car-model">VIP • Long Distance</span>
-        <div class="specs-grid">
-            <div class="spec-item"><i class="fa-solid fa-user-group"></i><span>47 Seats</span></div>
-            <div class="spec-item"><i class="fa-solid fa-suitcase"></i><span>60 Bags (Large)</span></div>
-            <div class="spec-item"><i class="fa-solid fa-snowflake"></i><span>Climate Ctrl</span></div>
-            <div class="spec-item"><i class="fa-solid fa-tv"></i><span>TV &#038; Wi-Fi</span></div>
-        </div>
-        <a class="book-btn" href="/index.php/luxury-bus-2/">View Details</a>
-    </div>
-  </div>
-
+@empty
+  <p style="grid-column:1/-1;text-align:center;padding:40px;color:#777;">No vehicles available at the moment. Please check back soon.</p>
+@endforelse
 </div>
+@verbatim
 </div>
 </div></div>
 </div>
@@ -743,403 +656,28 @@
 
 <h2 class="section-heading">Our Route</h2>
 
+@endverbatim
 <div class="package-card-main">
+@forelse($routes as $route)
     <div class="package-card">
         <div class="card-header">
-            <h1>JEDDAH AIRPORT TO MAKKAH HOTEL</h1>
+            <h1>{{ $route->name }}</h1>
         </div>
         <div class="card-content">
             <h2>PACKAGE DETAILS</h2>
             <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 330/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 430/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 800/-</li>
+                @foreach($route->items ?? [] as $item)
+                <li><span class="checkmark">&#x2713;</span> {{ $item['label'] }}: {{ $item['price'] }}/-</li>
+                @endforeach
             </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
+            <a href="{{ route('contact') }}" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
         </div>
     </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MAKKAH HOTEL TO JEDDAH AIRPORT</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 200/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 300/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 350/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 500/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 800/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MAKKAH HOTEL TO MADINA HOTEL</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 530/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 850/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 1000/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1300/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MADINA HOTEL TO MAKKAH HOTEL</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 530/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 850/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 1000/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1300/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MADINA AIRPORT TO MADINA HOTEL</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 150/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 200/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 300/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 300/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 500/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 700/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MADINA HOTEL TO MADINA AIRPORT</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 100/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 150/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 200/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 600/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MAKKAH ZIYARAT</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 200/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 300/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 350/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 500/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 700/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MADINA ZIYARAT</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 200/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 350/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 300/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 450/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 600/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>JEDDAH AIRPORT TO MADINA HOTEL</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 450/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 550/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 900/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 1000/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1300/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MADINA HOTEL TO JEDDAH AIRPORT</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 530/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 850/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 1000/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1300/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MAKKAH TO TAIF ZIARAH &#038; RETURN MAKKAH</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 450/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 550/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 850/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 1000/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1200/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>JEDDAH AIRPORT TO JEDDAH HOTEL</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 150/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 200/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 300/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 600/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>HOTEL TO TRAIN STATION</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 100/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 150/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 200/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 550/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>TRAIN STATION TO HOTEL</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 100/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 150/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 200/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater) : 550/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>PER HOUR RATE</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 80/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 100/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 130/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 120/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 150/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 180/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MAKKAH HOTEL TO MADINA HOTEL VIA BADR</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 700/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 1100/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 800/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 1300/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1600/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MADINA HOTEL TO MAKKAH HOTEL VIA BADR</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 700/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 1100/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 800/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 1300/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1600/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MADINA HOTEL TO BADR ZIYARAH TO MADINA HOTEL</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 450/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 550/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 800/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 900/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1200/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MADINA ZIYARAH + BADR ZIYARAH</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 600/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 750/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 1100/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 900/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 1250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 1600/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MASJID-E-AYESHA MEEQAT</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 100/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 150/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 550/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MASJID JURANA MEEQAT</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 125/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 175/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 250/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 450/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 600/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
-
-    <div class="package-card">
-        <div class="card-header">
-            <h1>MAKKAH HOTEL TO TAIF MEEQAT &#038; BACK MAKKAH</h1>
-        </div>
-        <div class="card-content">
-            <h2>PACKAGE DETAILS</h2>
-            <ul>
-                <li><span class="checkmark">&#x2713;</span> Camry, Sonata (4 Seater): 300/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hyundai H1 (7 Seater): 400/-</li>
-                <li><span class="checkmark">&#x2713;</span> GMC New Model (7 Seater): 500/-</li>
-                <li><span class="checkmark">&#x2713;</span> Hiace (11 Seater): 450/-</li>
-                <li><span class="checkmark">&#x2713;</span> Coaster (17 Seater): 550/-</li>
-                <li><span class="checkmark">&#x2713;</span> Bus (42 Seater): 700/-</li>
-            </ul>
-            <a href="/index.php/contact-us/" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
-        </div>
-    </div>
+@empty
+    <p style="grid-column:1/-1;text-align:center;padding:40px;color:#777;">No routes available at the moment.</p>
+@endforelse
 </div>
+@verbatim
 </div>
 </div>
 </div>
@@ -1231,294 +769,33 @@
 
 <h2 class="section-heading">Packages</h2>
 
+@endverbatim
 <div class="package-grid">
-
-    <!-- PACKAGE 1 - Hyundai Staria -->
+@forelse($packages as $package)
     <div class="tm-card">
-        <div class="package-id">Package 1</div>
-        <div class="car-badge">Hyundai Staria</div>
-        <div class="capacity">8 Seater 8 Luggage</div>
+        <div class="package-id">{{ $package->name }}</div>
+        @if($package->badge)
+        <div class="car-badge">{{ $package->badge }}</div>
+        @endif
+        @if($package->capacity)
+        <div class="capacity">{{ $package->capacity }}</div>
+        @endif
         <ul class="trip-list">
-            <li>Jeddah Airport to Makkah</li>
-            <li>Makkah Hotel to Medina Hotel</li>
-            <li>Medina Hotel to Medina Airport</li>
+            @foreach($package->tripLines() as $trip)
+            <li>{{ $trip }}</li>
+            @endforeach
         </ul>
-        <div class="price-box">Total Cost SAR 1200</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
+        <div class="price-box">Total Cost SAR {{ $package->price }}</div>
+        @if($package->footer_note)
+        <div class="footer-note">{{ $package->footer_note }}</div>
+        @endif
+        <img src="{{ $package->image ?: '/wp-uploads/2025/11/car-1.png' }}" class="car-img">
     </div>
-
-    <!-- PACKAGE 2 - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 2</div>
-        <div class="car-badge">Hyundai Staria</div>
-        <div class="capacity">8 Seater 8 Luggage</div>
-        <ul class="trip-list">
-            <li>Jeddah Airport to Makkah</li>
-            <li>Makkah Ziarat</li>
-            <li>Makkah Hotel to Medina Hotel</li>
-            <li>Medina Ziarat</li>
-            <li>Medina Hotel to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1600</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 3 - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 3</div>
-        <div class="car-badge">Hyundai Staria</div>
-        <div class="capacity">8 Seater 8 Luggage</div>
-        <ul class="trip-list">
-            <li>Jeddah Airport to Makkah</li>
-            <li>Makkah Ziarat</li>
-            <li>Makkah Hotel to Medina Hotel</li>
-            <li>Medina Ziarat</li>
-            <li>Medina Hotel to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1550</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 4 - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 4</div>
-        <div class="car-badge">Hyundai Staria</div>
-        <div class="capacity">8 Seater 8 Luggage</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Hotel to Makkah Hotel</li>
-            <li>Makkah Hotel to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1150</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 5 - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 5</div>
-        <div class="car-badge">Hyundai Staria</div>
-        <div class="capacity">8 Seater 8 Luggage</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Hotel to Makkah Hotel</li>
-            <li>Makkah Hotel to Madina Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1200</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 6 - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 6</div>
-        <div class="car-badge">Hyundai Staria</div>
-        <div class="capacity">8 Seater 8 Luggage</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Ziarat</li>
-            <li>Madina Hotel to Makkah Hotel</li>
-            <li>Makkah Ziarat</li>
-            <li>Makkah Hotel to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1600</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 7 - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 7</div>
-        <div class="car-badge">Hyundai Staria</div>
-        <div class="capacity">8 Seater 8 Luggage</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Ziarat</li>
-            <li>Madina Hotel to Makkah Hotel</li>
-            <li>Makkah Ziarat</li>
-            <li>Makkah Hotel to Madina Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1550</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 8 VIA TRAIN - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 8</div>
-        <div class="car-badge">Via Train</div>
-        <div class="capacity">8 Seater Hyundai Staria</div>
-        <ul class="trip-list">
-            <li>Jeddah Airport to Makkah Hotel</li>
-            <li>Makkah Hotel to Makkah Train Station</li>
-            <li>Madina Train Station to Madina Hotel</li>
-            <li>Madina Hotel to Madina Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1100</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 9 VIA TRAIN - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 9</div>
-        <div class="car-badge">Via Train</div>
-        <div class="capacity">8 Seater Hyundai Staria</div>
-        <ul class="trip-list">
-            <li>Jeddah Airport to Makkah Hotel</li>
-            <li>Makkah Hotel to Makkah Train Station</li>
-            <li>Madina Train Station to Madina Hotel</li>
-            <li>Madina Hotel to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1300</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 10 VIA TRAIN - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 10</div>
-        <div class="car-badge">Via Train</div>
-        <div class="capacity">8 Seater Hyundai Staria</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Hotel to Madina Train Station</li>
-            <li>Makkah Train Station to Makkah Hotel</li>
-            <li>Makkah Hotel to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1100</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- PACKAGE 11 VIA TRAIN - Hyundai Staria -->
-    <div class="tm-card">
-        <div class="package-id">Package 11</div>
-        <div class="car-badge">Via Train</div>
-        <div class="capacity">8 Seater Hyundai Staria</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Hotel to Madina Train Station</li>
-            <li>Makkah Train Station to Makkah Hotel</li>
-            <li>Makkah Hotel to Madina Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 1200</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/car-1.png" class="car-img">
-    </div>
-
-    <!-- SUPER PACKAGE 1 - GMC Yukon XL -->
-    <div class="tm-card">
-        <div class="package-id">Super Package 1</div>
-        <div class="car-badge">Staria / GMC</div>
-        <div class="capacity">Premium Combined Ziarat</div>
-        <ul class="trip-list">
-            <li>Jeddah Airport to Makkah</li>
-            <li>Makkah Ziarat + Taif Ziarat (Combine)</li>
-            <li>Makkah Hotel to Madina Hotel</li>
-            <li>Madina Ziarat + Badar Ziarat (Combine)</li>
-            <li>Madina Hotel to Madina Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 2000</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/pic-3.png" class="car-img">
-    </div>
-
-    <!-- SUPER PACKAGE 2 - GMC Yukon XL -->
-    <div class="tm-card">
-        <div class="package-id">Super Package 2</div>
-        <div class="car-badge">Staria / GMC</div>
-        <div class="capacity">Grand Umrah Package</div>
-        <ul class="trip-list">
-            <li>Jeddah Airport to Makkah Hotel</li>
-            <li>Makkah Ziarat</li>
-            <li>Makkah to Taif Ziarat to Madina</li>
-            <li>Madina Ziarat</li>
-            <li>Madina Hotel to Badar Ziarat to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 2500</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/pic-3.png" class="car-img">
-    </div>
-
-    <!-- SUPER PACKAGE 3 - GMC Yukon XL -->
-    <div class="tm-card">
-        <div class="package-id">Super Package 3</div>
-        <div class="car-badge">Staria / GMC</div>
-        <div class="capacity">Grand Umrah Package</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Ziarat</li>
-            <li>Madina Hotel to Badar Ziarat to Makkah Hotel</li>
-            <li>Makkah Ziarat</li>
-            <li>Makkah Hotel to Taif Ziarat to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 2500</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/pic-3.png" class="car-img">
-    </div>
-
-    <!-- MEGA PACKAGE 1 - GMC Yukon XL -->
-    <div class="tm-card">
-        <div class="package-id">Mega Package 1</div>
-        <div class="car-badge">Luxury Transport</div>
-        <div class="capacity">Complete Tour Package</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Ziarat</li>
-            <li>Badar Ziarat</li>
-            <li>Madina Hotel to Makkah Hotel</li>
-            <li>Makkah Ziarat</li>
-            <li>Taif Ziarat</li>
-            <li>Makkah Hotel to Madina Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 2800</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/pic-3.png" class="car-img">
-    </div>
-
-    <!-- MEGA PACKAGE 2 - GMC Yukon XL -->
-    <div class="tm-card">
-        <div class="package-id">Mega Package 2</div>
-        <div class="car-badge">Luxury Transport</div>
-        <div class="capacity">Complete Tour Package</div>
-        <ul class="trip-list">
-            <li>Madina Airport to Madina Hotel</li>
-            <li>Madina Ziarat</li>
-            <li>Badar Ziarat</li>
-            <li>Madina Hotel to Makkah Hotel</li>
-            <li>Makkah Ziarat</li>
-            <li>Taif Ziarat</li>
-            <li>Makkah Hotel to Jeddah Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 2900</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/pic-3.png" class="car-img">
-    </div>
-
-    <!-- MEGA PACKAGE 3 - GMC Yukon XL -->
-    <div class="tm-card">
-        <div class="package-id">Mega Package 3</div>
-        <div class="car-badge">Luxury Transport</div>
-        <div class="capacity">Complete Tour Package</div>
-        <ul class="trip-list">
-            <li>Jeddah Airport to Makkah</li>
-            <li>Makkah Ziarat</li>
-            <li>Taif Ziarat</li>
-            <li>Makkah Hotel to Madina Hotel</li>
-            <li>Madina Ziarat</li>
-            <li>Badar Ziarat</li>
-            <li>Madina Hotel to Madina Airport</li>
-        </ul>
-        <div class="price-box">Total Cost SAR 2800</div>
-        <div class="footer-note">Full-car options for every trip</div>
-        <img src="/wp-uploads/2025/11/pic-3.png" class="car-img">
-    </div>
-
+@empty
+    <p style="grid-column:1/-1;text-align:center;padding:40px;color:#777;">No packages available at the moment.</p>
+@endforelse
 </div>
+@verbatim
 
 
 

@@ -66,7 +66,7 @@ class ImportWordpress extends Command
                 [
                     'name'        => $row->post_title,
                     'slug'        => $row->post_name,
-                    'excerpt'     => Str::limit(trim(strip_tags($html)), 160),
+                    'excerpt'     => Str::limit(trim(preg_replace('/\s+/', ' ', strip_tags($html))), 160),
                     'description' => $html,
                     'image'       => $images[0] ?? null,
                     'gallery'     => array_slice($images, 0, 8),
@@ -126,7 +126,7 @@ class ImportWordpress extends Command
                 [
                     'title'        => $row->post_title ?: 'Untitled',
                     'slug'         => $slug,
-                    'excerpt'      => Str::limit(trim(strip_tags($html)), 200),
+                    'excerpt'      => Str::limit(trim(preg_replace('/\s+/', ' ', strip_tags($html))), 200),
                     'content'      => $html,
                     'image'        => $images[0] ?? null,
                     'is_published' => true,
@@ -141,6 +141,9 @@ class ImportWordpress extends Command
     private function cleanHtml(?string $html): string
     {
         $html = (string) $html;
+        // remove <style>/<script> blocks entirely (tag + inner CSS/JS) so they
+        // never leak into excerpts (strip_tags would keep the inner text) or the page
+        $html = preg_replace('#<(style|script)\b[^>]*>.*?</\1>#is', '', $html);
         // remove <!-- wp:... --> and <!-- /wp:... --> block delimiters
         $html = preg_replace('/<!--\s*\/?wp:.*?-->/s', '', $html);
         return $this->rewriteUrls($html);
