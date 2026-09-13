@@ -749,7 +749,7 @@
 
     .trip-list { list-style: none; padding: 0; text-align: left; max-width: 290px; margin: 0 auto 25px auto; min-height: 200px; }
     .trip-list li { font-size: 15px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: flex-start; line-height: 1.3; color: #fff; }
-    .trip-list li::before { content: "■"; color: #342008; margin-right: 12px; font-size: 18px; flex-shrink: 0; }
+    .trip-list li::before { content: "â– "; color: #342008; margin-right: 12px; font-size: 18px; flex-shrink: 0; }
 
     .price-box { border: 3px solid white; display: inline-block; padding: 8px 25px; font-size: 20px; font-weight: 800; border-radius: 6px; color: #fff; }
     
@@ -828,7 +828,7 @@
 
 
 
-<p class="has-secondary-color has-text-color has-link-color has-outfit-font-family has-small-font-size wp-elements-431bdfac5f36b8c1b89ba014562eb455" style="margin-top:0px;margin-bottom:0px;font-style:thin;font-weight:400;line-height:1.4">At Makhah Taxi, we are dedicated to providing high-quality transportation services tailored to your needs. Whether you’re heading to an important meeting, an event, or an airport, our mission is to ensure every ride is safe, professional, and completely seamless from start to finish.</p>
+<p class="has-secondary-color has-text-color has-link-color has-outfit-font-family has-small-font-size wp-elements-431bdfac5f36b8c1b89ba014562eb455" style="margin-top:0px;margin-bottom:0px;font-style:thin;font-weight:400;line-height:1.4">At Makhah Taxi, we are dedicated to providing high-quality transportation services tailored to your needs. Whether youâ€™re heading to an important meeting, an event, or an airport, our mission is to ensure every ride is safe, professional, and completely seamless from start to finish.</p>
 
 
 
@@ -974,7 +974,7 @@
 
 
 <div class="wp-block-column faq-inner-head-box is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
-<p class="has-text-align-center faq-small-title has-primary-color has-text-color has-link-color has-outfit-font-family wp-elements-74a3f08f2633d1e307a19315e6dd1ff6" style="padding-right:12px;padding-left:12px;font-size:17px;font-style:thin;font-weight:500;text-transform:capitalize">FAQ’s</p>
+<p class="has-text-align-center faq-small-title has-primary-color has-text-color has-link-color has-outfit-font-family wp-elements-74a3f08f2633d1e307a19315e6dd1ff6" style="padding-right:12px;padding-left:12px;font-size:17px;font-style:thin;font-weight:500;text-transform:capitalize">FAQâ€™s</p>
 
 
 
@@ -1047,4 +1047,57 @@
 
 
 @endverbatim
+
+{{-- Quick enquiry form --}}
+<section id="enquiry" style="background:#16295c;padding:56px 16px;">
+    <div style="max-width:720px;margin:0 auto;">
+        <h2 style="text-align:center;color:#fff;font-size:32px;font-weight:700;margin:0 0 6px;text-transform:capitalize;">
+            Send us a quick enquiry
+        </h2>
+        <p style="text-align:center;color:#c7d3ea;margin:0 0 28px;font-size:16px;">
+            Leave your details and our team will get back to you shortly.
+        </p>
+
+        @if (session('enquiry_status'))
+            <div style="background:#25d366;color:#fff;padding:12px 16px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:600;">
+                {{ session('enquiry_status') }}
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('enquiry.submit') }}#enquiry"
+              style="background:#fff;padding:26px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.2);">
+            @csrf
+            <div style="display:flex;flex-wrap:wrap;gap:16px;">
+                <div style="flex:1 1 220px;">
+                    <label style="display:block;font-size:13px;font-weight:600;color:#16295c;margin-bottom:6px;">Name *</label>
+                    <input name="name" value="{{ old('name') }}" required
+                           style="width:100%;padding:11px 13px;border:1px solid #c7d3ea;border-radius:8px;font-size:15px;">
+                    @error('name')<span style="color:#d33;font-size:12px;">{{ $message }}</span>@enderror
+                </div>
+                <div style="flex:1 1 220px;">
+                    <label style="display:block;font-size:13px;font-weight:600;color:#16295c;margin-bottom:6px;">Phone *</label>
+                    <input name="phone" value="{{ old('phone') }}" required
+                           style="width:100%;padding:11px 13px;border:1px solid #c7d3ea;border-radius:8px;font-size:15px;">
+                    @error('phone')<span style="color:#d33;font-size:12px;">{{ $message }}</span>@enderror
+                </div>
+            </div>
+            <div style="margin-top:16px;">
+                <label style="display:block;font-size:13px;font-weight:600;color:#16295c;margin-bottom:6px;">Email (optional)</label>
+                <input type="email" name="email" value="{{ old('email') }}"
+                       style="width:100%;padding:11px 13px;border:1px solid #c7d3ea;border-radius:8px;font-size:15px;">
+                @error('email')<span style="color:#d33;font-size:12px;">{{ $message }}</span>@enderror
+            </div>
+            <div style="margin-top:16px;">
+                <label style="display:block;font-size:13px;font-weight:600;color:#16295c;margin-bottom:6px;">Message *</label>
+                <textarea name="message" rows="4" required
+                          style="width:100%;padding:11px 13px;border:1px solid #c7d3ea;border-radius:8px;font-size:15px;resize:vertical;">{{ old('message') }}</textarea>
+                @error('message')<span style="color:#d33;font-size:12px;">{{ $message }}</span>@enderror
+            </div>
+            <button type="submit"
+                    style="margin-top:20px;width:100%;background:#16295c;color:#fff;border:0;padding:14px;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;text-transform:capitalize;">
+                Send enquiry
+            </button>
+        </form>
+    </div>
+</section>
 @endsection

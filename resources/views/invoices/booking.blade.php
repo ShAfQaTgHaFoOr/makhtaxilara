@@ -28,7 +28,7 @@
         .top td { vertical-align: middle; }
         .top .title { text-align: center; font-size: 30px; font-weight: bold; letter-spacing: 1px; color: #16295c; }
         .top .logo { text-align: right; }
-        .top .logo img { height: 62px; }
+        .top .logo img { height: 100px; }
         .top .qr { text-align: left; }
         .top .qr img { height: 66px; width: 66px; }
         .top .qr div { font-size: 8px; color: #667; margin-top: 2px; }
@@ -54,6 +54,13 @@
         .remaining { background: #fff34d; }
 
         .foot { background: #16295c; color: #fff; text-align: center; font-weight: bold; padding: 9px; margin-top: 12px; letter-spacing: .5px; }
+
+        /* second page — passport details */
+        .page-break { page-break-before: always; }
+        @media screen { .page-break { margin-top: 24px; } }
+        .pp th { background: #16295c; color: #fff; padding: 8px 9px; text-align: left; font-size: 11px; }
+        .pp td { border: 1px solid #16295c; padding: 8px 9px; }
+        .pp .idx { width: 34px; text-align: center; }
 
         /* web-only toolbar */
         .toolbar { width: 780px; max-width: 100%; margin: 18px auto 0; text-align: right; }
@@ -109,12 +116,20 @@
             <td class="lbl-b">Booking Date</td><td class="val">{{ $booking->created_at?->format('Y-m-d') }}</td>
         </tr>
         <tr>
-            <td class="lbl">Landline</td><td class="val"></td>
+            <td class="lbl">Landline</td><td class="val">{{ $booking->landline }}</td>
             <td class="lbl-b">Reference</td><td class="val">{{ $booking->email }}</td>
         </tr>
         <tr>
             <td class="lbl">Nationality</td><td class="val">{{ $booking->nationality }}</td>
-            <td class="lbl-b">Company Name</td><td class="val"></td>
+            <td class="lbl-b">Nusuk TC ID</td>
+            <td class="val">
+                <table style="width:100%;border:0;"><tr>
+                    <td style="border:0;padding:0;vertical-align:middle;">{{ $nusukId }}</td>
+                    <td style="border:0;padding:0;text-align:right;vertical-align:middle;width:56px;">
+                        <img src="{{ $nusukQr }}" alt="Nusuk TC ID {{ $nusukId }}" style="height:52px;width:52px;">
+                    </td>
+                </tr></table>
+            </td>
         </tr>
         <tr>
             <td class="lbl">Start Trip Date</td><td class="val">{{ $startDate }}</td>
@@ -127,10 +142,10 @@
         <tr><td class="lbl">No of Pax</td><td class="val">{{ $booking->passengers }}</td></tr>
         <tr><td class="lbl">Arrival Details</td><td class="val">{{ $booking->pickup_location }}</td></tr>
         <tr><td class="lbl">Departure Details</td><td class="val">{{ $booking->dropoff_location }}</td></tr>
-        <tr><td class="lbl">Makkah Hotels</td><td class="val"></td></tr>
-        <tr><td class="lbl">Medina Hotels</td><td class="val"></td></tr>
-        <tr><td class="lbl">Jeddah Hotels</td><td class="val"></td></tr>
-        <tr><td class="lbl">Taif hotels</td><td class="val"></td></tr>
+        <tr><td class="lbl">Makkah Hotels</td><td class="val">{{ $booking->makkah_hotel }}</td></tr>
+        <tr><td class="lbl">Medina Hotels</td><td class="val">{{ $booking->madina_hotel }}</td></tr>
+        <tr><td class="lbl">Jeddah Hotels</td><td class="val">{{ $booking->jeddah_hotel }}</td></tr>
+        <tr><td class="lbl">Taif hotels</td><td class="val">{{ $booking->taif_hotel }}</td></tr>
         <tr><td class="lbl">Note</td><td class="val">{{ $booking->notes }}</td></tr>
     </table>
 
@@ -172,5 +187,50 @@
 
     <div class="foot">Thank You for Choosing Us</div>
 </div>
+
+@if (! empty($booking->passport_details))
+<div class="sheet page-break">
+
+    {{-- Passport page header --}}
+    <table class="top">
+        <tr>
+            <td class="title" style="width:78%">MAKHAH TAXI</td>
+            <td class="logo" style="width:22%"><img src="{{ $logoSrc }}" alt="Makhah Taxi"></td>
+        </tr>
+    </table>
+
+    <div class="bar-center" style="margin-top:8px">Passenger Passport Details</div>
+
+    <div class="info" style="margin-top:8px;padding:6px 9px;border:1px solid #16295c">
+        <b>Invoice No:</b> {{ $booking->booking_no }} &nbsp; | &nbsp;
+        <b>Lead Passenger:</b> {{ $booking->name }} &nbsp; | &nbsp;
+        <b>No of Pax:</b> {{ $booking->passengers }}
+    </div>
+
+    <table class="rt pp" style="margin-top:12px">
+        <tr>
+            <th class="idx">#</th>
+            <th>Passenger Name</th>
+            <th style="width:18%">Passport No</th>
+            <th style="width:18%">Nationality</th>
+            <th style="width:15%">Date of Birth</th>
+            <th style="width:15%">Passport Expiry</th>
+        </tr>
+        @foreach ($booking->passport_details as $i => $p)
+        <tr>
+            <td class="idx">{{ $i + 1 }}</td>
+            <td>{{ $p['name'] ?? '' }}</td>
+            <td>{{ $p['passport_no'] ?? '' }}</td>
+            <td>{{ $p['nationality'] ?? '' }}</td>
+            <td>{{ $p['dob'] ?? '' }}</td>
+            <td>{{ $p['expiry'] ?? '' }}</td>
+        </tr>
+        @endforeach
+    </table>
+
+    <div class="foot">Thank You for Choosing Us</div>
+</div>
+@endif
+
 </body>
 </html>

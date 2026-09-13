@@ -18,4 +18,18 @@ class Driver extends Model
     {
         return $this->belongsTo(Vehicle::class);
     }
+
+    /** Bookings assigned to this driver. */
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
+    /** Digits-only phone suitable for a wa.me / WhatsApp deep link. */
+    public function whatsappNumber(): ?string
+    {
+        $digits = preg_replace('/\D+/', '', (string) $this->phone);
+
+        return $digits !== '' ? $digits : null;
+    }
 }

@@ -9,6 +9,9 @@ use Endroid\QrCode\Writer\PngWriter;
 
 class InvoiceController extends Controller
 {
+    /** Fixed Nusuk transport company (TC) ID — the same on every invoice. */
+    private const NUSUK_TC_ID = '289';
+
     /** Shareable, printable HTML invoice (public link, keyed on the random booking_no). */
     public function show(string $booking_no)
     {
@@ -24,7 +27,7 @@ class InvoiceController extends Controller
 
         $pdf = Pdf::loadView('invoices.booking', $this->viewData($booking, true));
 
-        return $pdf->download('invoice-' . $booking->booking_no . '.pdf');
+        return $pdf->download('invoice-'.$booking->booking_no.'.pdf');
     }
 
     /** Shared view payload — includes a QR that links to this booking's online detail page. */
@@ -32,8 +35,10 @@ class InvoiceController extends Controller
     {
         return [
             'booking' => $booking,
-            'pdf'     => $pdf,
-            'qr'      => $this->qrDataUri(route('booking.invoice', $booking->booking_no)),
+            'pdf' => $pdf,
+            'qr' => $this->qrDataUri(route('booking.invoice', $booking->booking_no)),
+            'nusukId' => self::NUSUK_TC_ID,
+            'nusukQr' => $this->qrDataUri(self::NUSUK_TC_ID),
         ];
     }
 
@@ -41,7 +46,7 @@ class InvoiceController extends Controller
     private function qrDataUri(string $text): string
     {
         return Builder::create()
-            ->writer(new PngWriter())
+            ->writer(new PngWriter)
             ->data($text)
             ->size(200)
             ->margin(6)

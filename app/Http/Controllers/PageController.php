@@ -68,9 +68,9 @@ class PageController extends Controller
     public function contactSubmit(Request $request)
     {
         $data = $request->validate([
-            'name'    => ['required', 'string', 'max:120'],
-            'email'   => ['required', 'email', 'max:160'],
-            'phone'   => ['nullable', 'string', 'max:40'],
+            'name' => ['required', 'string', 'max:120'],
+            'email' => ['required', 'email', 'max:160'],
+            'phone' => ['nullable', 'string', 'max:40'],
             'subject' => ['nullable', 'string', 'max:160'],
             'message' => ['required', 'string', 'max:5000'],
         ]);
@@ -79,5 +79,23 @@ class PageController extends Controller
         Contact::create($data);
 
         return back()->with('status', 'Thank you! Your message has been sent.');
+    }
+
+    /** Quick enquiry form on the landing page — captures name / phone / message. */
+    public function enquiry(Request $request)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:120'],
+            'phone' => ['required', 'string', 'max:40'],
+            'email' => ['nullable', 'email', 'max:160'],
+            'message' => ['required', 'string', 'max:5000'],
+        ]);
+
+        $data['source'] = 'enquiry';
+        Contact::create($data);
+
+        return back()
+            ->with('enquiry_status', 'Thank you! We have received your enquiry and will contact you shortly.')
+            ->withFragment('enquiry');
     }
 }

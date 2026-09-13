@@ -30,6 +30,9 @@ Route::get('/blog/{post}', [PageController::class, 'post'])->name('post.show');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact-us', [PageController::class, 'contactSubmit'])->name('contact.submit');
 
+// Quick enquiry (landing page)
+Route::post('/enquiry', [PageController::class, 'enquiry'])->name('enquiry.submit');
+
 // Auth (login, register, my-bookings) — must come before the generic {slug} catch-all
 if (file_exists(__DIR__ . '/auth.php')) {
     require __DIR__ . '/auth.php';

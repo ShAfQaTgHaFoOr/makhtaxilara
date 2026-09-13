@@ -285,6 +285,8 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 @yield('content')
 
+@include('partials.enquiry-modal')
+
 @verbatim
 <footer class="wp-block-template-part">
 <div class="wp-block-group footer-section has-foreground-background-color has-background is-layout-constrained wp-container-core-group-is-layout-4f9f0532 wp-block-group-is-layout-constrained">

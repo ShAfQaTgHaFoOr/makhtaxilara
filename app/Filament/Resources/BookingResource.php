@@ -11,6 +11,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 class BookingResource extends Resource
@@ -29,7 +31,7 @@ class BookingResource extends Resource
     }
 
     /** Staff see only the bookings they created; super admins see all. */
-    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    public static function getEloquentQuery(): Builder
     {
         $query = parent::getEloquentQuery();
         $user = auth()->user();
@@ -57,7 +59,8 @@ class BookingResource extends Resource
                         Forms\Components\TextInput::make('email')
                             ->email()->maxLength(255)
                             ->placeholder('Optional'),
-                        Forms\Components\TextInput::make('phone')->tel()->required()->maxLength(255),
+                        Forms\Components\TextInput::make('phone')->label('WhatsApp')->tel()->required()->maxLength(255),
+                        Forms\Components\TextInput::make('landline')->tel()->maxLength(255)->placeholder('Optional'),
                     ]),
 
                 Forms\Components\Section::make('Trip')
@@ -71,11 +74,64 @@ class BookingResource extends Resource
                             ->label('Departure (flight & time)')
                             ->placeholder('e.g. SV456 departing 20:00')
                             ->maxLength(255),
+                        Forms\Components\TextInput::make('flight_number')
+                            ->label('Flight number')
+                            ->maxLength(255)->placeholder('Optional'),
+                        Forms\Components\TextInput::make('departure_time')
+                            ->label('Departure time')
+                            ->maxLength(255)->placeholder('e.g. 20:00'),
                         Forms\Components\DateTimePicker::make('pickup_at')
-                            ->label('Booking date & time')
+                            ->label('Booking date & pickup time')
                             ->required()->seconds(false)->native(false),
                         Forms\Components\TextInput::make('passengers')->numeric()->minValue(1)->default(1)->required(),
+                        Forms\Components\Select::make('driver_id')
+                            ->label('Driver')
+                            ->relationship('driver', 'name')
+                            ->searchable()
+                            ->preload()
+                            ->placeholder('No driver assigned yet')
+                            ->helperText('Assign a driver to enable the WhatsApp send button.'),
                         Forms\Components\Textarea::make('notes')->rows(3)->columnSpanFull(),
+                    ]),
+
+                Forms\Components\Section::make('Hotels')
+                    ->columns(2)
+                    ->collapsed()
+                    ->schema([
+                        Forms\Components\TextInput::make('makkah_hotel')->label('Makkah hotel')->maxLength(255),
+                        Forms\Components\TextInput::make('madina_hotel')->label('Madina hotel')->maxLength(255),
+                        Forms\Components\TextInput::make('jeddah_hotel')->label('Jeddah hotel')->maxLength(255),
+                        Forms\Components\TextInput::make('taif_hotel')->label('Taif hotel')->maxLength(255),
+                    ]),
+
+                Forms\Components\Section::make('Confirmation')
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('confirmed_by')->label('Confirmed by')->maxLength(255)->placeholder('e.g. Shamaoon'),
+                        Forms\Components\TextInput::make('agency')->label('Agency / company')->maxLength(255)->placeholder('e.g. Ziarat Travels'),
+                    ]),
+
+                Forms\Components\Section::make('Passenger passport details')
+                    ->description('Each traveler added here appears on a second page of the invoice.')
+                    ->collapsed()
+                    ->schema([
+                        Forms\Components\Repeater::make('passport_details')
+                            ->hiddenLabel()
+                            ->schema([
+                                Forms\Components\TextInput::make('name')->label('Passenger name')->maxLength(255)->columnSpan(2),
+                                Forms\Components\TextInput::make('passport_no')->label('Passport no.')->maxLength(255)->columnSpan(2),
+                                Forms\Components\Select::make('nationality')
+                                    ->options(Booking::nationalities())->searchable()->columnSpan(2),
+                                Forms\Components\DatePicker::make('dob')->label('Date of birth')
+                                    ->native(false)->displayFormat('Y-m-d')->columnSpan(2),
+                                Forms\Components\DatePicker::make('expiry')->label('Passport expiry')
+                                    ->native(false)->displayFormat('Y-m-d')->columnSpan(2),
+                            ])
+                            ->columns(10)
+                            ->addActionLabel('Add passenger')
+                            ->reorderable()
+                            ->collapsible()
+                            ->itemLabel(fn (array $state): ?string => $state['name'] ?? null),
                     ]),
 
                 Forms\Components\Section::make('Route legs (optional — for multi-stop invoices)')
@@ -113,7 +169,7 @@ class BookingResource extends Resource
                                         // Added vehicles are hidden from the website fleet until activated in Fleet.
                                         Vehicle::firstOrCreate(
                                             ['name' => $data['name']],
-                                            ['slug' => Str::slug($data['name']) . '-' . Str::lower(Str::random(4)), 'is_active' => false],
+                                            ['slug' => Str::slug($data['name']).'-'.Str::lower(Str::random(4)), 'is_active' => false],
                                         );
 
                                         return $data['name'];
@@ -163,6 +219,7 @@ class BookingResource extends Resource
                 Tables\Columns\TextColumn::make('booking_no')->label('Booking')->searchable()->weight('bold'),
                 Tables\Columns\TextColumn::make('name')->label('Customer')->searchable(),
                 Tables\Columns\TextColumn::make('vehicle.name')->label('Vehicle')->sortable()->placeholder('—'),
+                Tables\Columns\TextColumn::make('driver.name')->label('Driver')->sortable()->toggleable()->placeholder('—'),
                 Tables\Columns\TextColumn::make('pickup_at')->dateTime('d M Y H:i')->sortable(),
                 Tables\Columns\TextColumn::make('fare_amount')->money('USD')->sortable(),
                 Tables\Columns\TextColumn::make('status')
@@ -193,6 +250,28 @@ class BookingResource extends Resource
                         'paid' => 'Paid',
                         'refunded' => 'Refunded',
                     ]),
+                Tables\Filters\Filter::make('pickup_at')
+                    ->label('Booking date')
+                    ->form([
+                        Forms\Components\DatePicker::make('from')->label('From')->native(false),
+                        Forms\Components\DatePicker::make('until')->label('Until')->native(false),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when($data['from'] ?? null, fn ($q, $date) => $q->whereDate('pickup_at', '>=', $date))
+                            ->when($data['until'] ?? null, fn ($q, $date) => $q->whereDate('pickup_at', '<=', $date));
+                    })
+                    ->indicateUsing(function (array $data): array {
+                        $indicators = [];
+                        if ($data['from'] ?? null) {
+                            $indicators[] = 'From '.Carbon::parse($data['from'])->toFormattedDateString();
+                        }
+                        if ($data['until'] ?? null) {
+                            $indicators[] = 'Until '.Carbon::parse($data['until'])->toFormattedDateString();
+                        }
+
+                        return $indicators;
+                    }),
             ])
             ->actions([
                 Tables\Actions\Action::make('invoice')
@@ -207,8 +286,22 @@ class BookingResource extends Resource
                     ->color('success')
                     ->url(fn (Booking $record) => route('booking.invoice.download', $record->booking_no))
                     ->openUrlInNewTab(),
+                Tables\Actions\Action::make('whatsappShare')
+                    ->label('WhatsApp')
+                    ->icon('heroicon-m-share')
+                    ->color('success')
+                    ->url(fn (Booking $record) => 'https://wa.me/?text='.rawurlencode($record->whatsappShareMessage()))
+                    ->openUrlInNewTab(),
+                Tables\Actions\Action::make('whatsappDriver')
+                    ->label('WhatsApp driver')
+                    ->icon('heroicon-m-chat-bubble-left-right')
+                    ->color('success')
+                    ->visible(fn (Booking $record) => (bool) $record->driver?->whatsappNumber())
+                    ->url(fn (Booking $record) => 'https://wa.me/'.$record->driver->whatsappNumber()
+                        .'?text='.rawurlencode($record->driverWhatsappMessage()))
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
-            ])
+            ], position: Tables\Enums\ActionsPosition::BeforeColumns)
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

@@ -10,17 +10,18 @@ class Booking extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'pickup_at'    => 'datetime',
-        'distance_km'  => 'decimal:2',
-        'fare_amount'  => 'decimal:2',
-        'route_items'  => 'array',
+        'pickup_at' => 'datetime',
+        'distance_km' => 'decimal:2',
+        'fare_amount' => 'decimal:2',
+        'route_items' => 'array',
+        'passport_details' => 'array',
     ];
 
     protected static function booted(): void
     {
         static::creating(function (Booking $booking) {
             if (empty($booking->booking_no)) {
-                $booking->booking_no = 'MKT-' . strtoupper(Str::random(8));
+                $booking->booking_no = 'MKT-'.strtoupper(Str::random(8));
             }
         });
 
@@ -60,6 +61,12 @@ class Booking extends Model
         return $this->belongsTo(Vehicle::class);
     }
 
+    /** The driver assigned to carry out this booking. */
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -69,6 +76,89 @@ class Booking extends Model
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    /** Short route summary — distinct route-leg names, else pickup → dropoff. */
+    public function routeSummary(): string
+    {
+        $routes = collect($this->route_items ?? [])->pluck('route')->filter()->unique()->values();
+
+        if ($routes->isNotEmpty()) {
+            return $routes->implode(' , ');
+        }
+
+        return trim($this->pickup_location.($this->dropoff_location ? ' to '.$this->dropoff_location : ''));
+    }
+
+    /**
+     * Booking confirmation message in the format the team shares over WhatsApp.
+     * Fixed lines (Landline/Flight/Departure/Driver) are kept even when blank to
+     * match the standard layout; hotel lines appear only when filled.
+     */
+    public function whatsappShareMessage(): string
+    {
+        $fare = rtrim(rtrim(number_format((float) $this->fare_amount, 2), '0'), '.');
+        $vehicle = $this->vehicle?->name
+            ?: collect($this->route_items ?? [])->pluck('vehicle')->filter()->first();
+
+        $lines = [];
+
+        if ($this->pickup_at) {
+            $lines[] = $this->pickup_at->format('j F Y');
+            $lines[] = '';
+        }
+
+        $lines[] = 'Name : '.$this->name;
+        $lines[] = 'Company : Makhah Taxi';
+        $lines[] = 'WhatsApp : '.$this->phone;
+        $lines[] = 'Landline : '.$this->landline;
+        $lines[] = 'Flight Number : '.$this->flight_number;
+        $lines[] = 'Route : '.$this->routeSummary();
+        $lines[] = 'Pickup Time : '.$this->pickup_at?->format('H:i');
+        $lines[] = 'Departure Time : '.$this->departure_time;
+        $lines[] = 'Vehicle : '.$vehicle;
+        $lines[] = 'No of Pax : '.$this->passengers;
+
+        foreach (['Makkah' => $this->makkah_hotel, 'Madina' => $this->madina_hotel, 'Jeddah' => $this->jeddah_hotel, 'Taif' => $this->taif_hotel] as $city => $hotel) {
+            if ($hotel) {
+                $lines[] = $city.' Hotel : '.$hotel;
+            }
+        }
+
+        $lines[] = '';
+        $lines[] = 'Cash : '.$fare.' SAR';
+        $lines[] = 'Driver : '.($this->driver?->name ?? '');
+        $lines[] = 'Note : '.$this->notes;
+        $lines[] = 'Confirmed By : '.$this->confirmed_by;
+
+        if ($this->agency) {
+            $lines[] = 'Company : *'.$this->agency.'*';
+        }
+
+        $lines[] = 'Website : https://www.makhahtaxi.com/';
+
+        return implode("\n", $lines);
+    }
+
+    /** Human-readable booking summary to send a driver over WhatsApp. */
+    public function driverWhatsappMessage(): string
+    {
+        $lines = [
+            '*Makhah Taxi — Booking '.$this->booking_no.'*',
+            'Customer: '.$this->name.($this->phone ? ' ('.$this->phone.')' : ''),
+            'Pickup date/time: '.($this->pickup_at?->format('d M Y, H:i') ?? '—'),
+            'Arrival: '.($this->pickup_location ?: '—'),
+            'Departure: '.($this->dropoff_location ?: '—'),
+            'Passengers: '.$this->passengers,
+            'Vehicle: '.($this->vehicle?->name ?? '—'),
+            'Fare: SAR '.number_format((float) $this->fare_amount, 2),
+        ];
+
+        if ($this->notes) {
+            $lines[] = 'Notes: '.$this->notes;
+        }
+
+        return implode("\n", $lines);
     }
 
     /** [start, end] trip dates derived from the route legs, falling back to the booking date. */
@@ -94,23 +184,23 @@ class Booking extends Model
                 $qty = (int) ($it['qty'] ?? 1) ?: 1;
 
                 return [
-                    'date'    => $it['date'] ?? $this->pickup_at?->format('Y-m-d'),
-                    'time'    => $it['time'] ?? $this->pickup_at?->format('H:i'),
-                    'route'   => $it['route'] ?? '',
+                    'date' => $it['date'] ?? $this->pickup_at?->format('Y-m-d'),
+                    'time' => $it['time'] ?? $this->pickup_at?->format('H:i'),
+                    'route' => $it['route'] ?? '',
                     'vehicle' => $it['vehicle'] ?? ($this->vehicle?->name ?? ''),
-                    'qty'     => $qty,
-                    'amount'  => $qty * (float) ($it['amount'] ?? 0),
+                    'qty' => $qty,
+                    'amount' => $qty * (float) ($it['amount'] ?? 0),
                 ];
             }, $this->route_items);
         }
 
         return [[
-            'date'    => $this->pickup_at?->format('Y-m-d'),
-            'time'    => $this->pickup_at?->format('H:i'),
-            'route'   => $this->pickup_location . ($this->dropoff_location ? ' → ' . $this->dropoff_location : ''),
+            'date' => $this->pickup_at?->format('Y-m-d'),
+            'time' => $this->pickup_at?->format('H:i'),
+            'route' => $this->pickup_location.($this->dropoff_location ? ' → '.$this->dropoff_location : ''),
             'vehicle' => $this->vehicle?->name ?? '—',
-            'qty'     => 1,
-            'amount'  => (float) $this->fare_amount,
+            'qty' => 1,
+            'amount' => (float) $this->fare_amount,
         ]];
     }
 }
