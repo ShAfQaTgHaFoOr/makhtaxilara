@@ -86,13 +86,29 @@ class PageController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:120'],
+            'phone_country' => ['required', 'string', 'max:8'],
             'phone' => ['required', 'string', 'max:40'],
             'email' => ['nullable', 'email', 'max:160'],
+            'route' => ['required', 'string', 'max:160'],
+            'route_other' => ['nullable', 'required_if:route,__other__', 'string', 'max:160'],
             'message' => ['required', 'string', 'max:5000'],
         ]);
 
-        $data['source'] = 'enquiry';
-        Contact::create($data);
+        // Resolve the chosen route (free-text "Other" overrides the dropdown value).
+        $route = $data['route'] === '__other__'
+            ? trim($data['route_other'])
+            : $data['route'];
+
+        Contact::create([
+            'name' => $data['name'],
+            'phone_country' => $data['phone_country'],
+            'phone' => ltrim($data['phone'], '0'),
+            'email' => $data['email'] ?? null,
+            'route' => $route,
+            'subject' => 'Route enquiry: '.$route,
+            'message' => $data['message'],
+            'source' => 'enquiry',
+        ]);
 
         return back()
             ->with('enquiry_status', 'Thank you! We have received your enquiry and will contact you shortly.')

@@ -217,6 +217,12 @@ class BookingResource extends Resource
             ->defaultSort('created_at', 'desc')
             ->columns([
                 Tables\Columns\TextColumn::make('booking_no')->label('Booking')->searchable()->weight('bold'),
+                Tables\Columns\TextColumn::make('invoice_no')->label('Invoice #')
+                    ->searchable()->sortable()
+                    ->badge()->color('info')
+                    ->url(fn (Booking $record) => route('booking.invoice', $record->booking_no))
+                    ->openUrlInNewTab()
+                    ->tooltip('Open invoice'),
                 Tables\Columns\TextColumn::make('name')->label('Customer')->searchable(),
                 Tables\Columns\TextColumn::make('vehicle.name')->label('Vehicle')->sortable()->placeholder('—'),
                 Tables\Columns\TextColumn::make('driver.name')->label('Driver')->sortable()->toggleable()->placeholder('—'),
@@ -286,20 +292,15 @@ class BookingResource extends Resource
                     ->color('success')
                     ->url(fn (Booking $record) => route('booking.invoice.download', $record->booking_no))
                     ->openUrlInNewTab(),
-                Tables\Actions\Action::make('whatsappShare')
-                    ->label('WhatsApp')
-                    ->icon('heroicon-m-share')
-                    ->color('success')
-                    ->url(fn (Booking $record) => 'https://wa.me/?text='.rawurlencode($record->whatsappShareMessage()))
-                    ->openUrlInNewTab(),
-                Tables\Actions\Action::make('whatsappDriver')
-                    ->label('WhatsApp driver')
-                    ->icon('heroicon-m-chat-bubble-left-right')
-                    ->color('success')
-                    ->visible(fn (Booking $record) => (bool) $record->driver?->whatsappNumber())
-                    ->url(fn (Booking $record) => 'https://wa.me/'.$record->driver->whatsappNumber()
-                        .'?text='.rawurlencode($record->driverWhatsappMessage()))
-                    ->openUrlInNewTab(),
+                Tables\Actions\Action::make('copyWhatsapp')
+                    ->label('Copy message')
+                    ->icon('heroicon-m-clipboard-document')
+                    ->color('gray')
+                    ->url('#')
+                    ->extraAttributes(fn (Booking $record): array => [
+                        'data-copy-text' => $record->whatsappShareMessage(),
+                        'onclick' => 'event.preventDefault(); window.mktCopy(this);',
+                    ]),
                 Tables\Actions\EditAction::make(),
             ], position: Tables\Enums\ActionsPosition::BeforeColumns)
             ->bulkActions([

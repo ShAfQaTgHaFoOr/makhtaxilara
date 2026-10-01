@@ -27,7 +27,7 @@ class InvoiceController extends Controller
 
         $pdf = Pdf::loadView('invoices.booking', $this->viewData($booking, true));
 
-        return $pdf->download('invoice-'.$booking->booking_no.'.pdf');
+        return $pdf->download('invoice-'.$booking->invoice_no.'.pdf');
     }
 
     /** Shared view payload — includes a QR that links to this booking's online detail page. */

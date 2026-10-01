@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Invoice {{ $booking->booking_no }} — {{ config('app.name') }}</title>
+    <title>Invoice {{ $booking->invoice_no }} — {{ config('app.name') }}</title>
     @php
         $navy   = '#16295c';
         $labelbg = '#c7d3ea';
@@ -109,7 +109,7 @@
     <table class="info">
         <tr>
             <td class="lbl">Mr. / Mrs</td><td class="val">{{ $booking->name }}</td>
-            <td class="lbl-b">Invoice No</td><td class="val">{{ $booking->booking_no }}</td>
+            <td class="lbl-b">Invoice No</td><td class="val">{{ $booking->invoice_no }}</td>
         </tr>
         <tr>
             <td class="lbl">Cell No</td><td class="val">{{ $booking->phone }}</td>
@@ -202,7 +202,7 @@
     <div class="bar-center" style="margin-top:8px">Passenger Passport Details</div>
 
     <div class="info" style="margin-top:8px;padding:6px 9px;border:1px solid #16295c">
-        <b>Invoice No:</b> {{ $booking->booking_no }} &nbsp; | &nbsp;
+        <b>Invoice No:</b> {{ $booking->invoice_no }} &nbsp; | &nbsp;
         <b>Lead Passenger:</b> {{ $booking->name }} &nbsp; | &nbsp;
         <b>No of Pax:</b> {{ $booking->passengers }}
     </div>

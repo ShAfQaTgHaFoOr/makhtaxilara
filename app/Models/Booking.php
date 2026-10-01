@@ -9,10 +9,14 @@ class Booking extends Model
 {
     protected $guarded = [];
 
+    /** Invoice numbers are sequential integers beginning at this value. */
+    public const INVOICE_START = 100000;
+
     protected $casts = [
         'pickup_at' => 'datetime',
         'distance_km' => 'decimal:2',
         'fare_amount' => 'decimal:2',
+        'invoice_no' => 'integer',
         'route_items' => 'array',
         'passport_details' => 'array',
     ];
@@ -22,6 +26,10 @@ class Booking extends Model
         static::creating(function (Booking $booking) {
             if (empty($booking->booking_no)) {
                 $booking->booking_no = 'MKT-'.strtoupper(Str::random(8));
+            }
+
+            if (empty($booking->invoice_no)) {
+                $booking->invoice_no = (static::max('invoice_no') ?? self::INVOICE_START - 1) + 1;
             }
         });
 
@@ -126,13 +134,14 @@ class Booking extends Model
         }
 
         $lines[] = '';
+        $lines[] = '';
         $lines[] = 'Cash : '.$fare.' SAR';
         $lines[] = 'Driver : '.($this->driver?->name ?? '');
         $lines[] = 'Note : '.$this->notes;
         $lines[] = 'Confirmed By : '.$this->confirmed_by;
 
         if ($this->agency) {
-            $lines[] = 'Company : *'.$this->agency.'*';
+            $lines[] = 'Company : '.$this->agency;
         }
 
         $lines[] = 'Website : https://www.makhahtaxi.com/';

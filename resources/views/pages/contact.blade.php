@@ -54,8 +54,8 @@
                 <aside>
                     <div class="mkt-panel">
                         <h3 style="margin-top:0">Get in touch</h3>
-                        <p>📞 <b>{{ \App\Models\Setting::get('phone', '+966 000 000 000') }}</b></p>
-                        <p>✉️ {{ \App\Models\Setting::get('email', 'info@makhahtaxi.com') }}</p>
+                        <p>📞 <b>+966564921220</b></p>
+                        <p>✉️ makhahtaxi@gmail.com</p>
                         <p>📍 {{ \App\Models\Setting::get('address', 'Makkah, Saudi Arabia') }}</p>
                     </div>
                 </aside>
