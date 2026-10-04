@@ -60,7 +60,9 @@ class ContactResource extends Resource
                         Forms\Components\TextInput::make('email')->email()->required()->maxLength(255),
                         Forms\Components\TextInput::make('phone_country')->label('Code')->maxLength(8)->placeholder('+966'),
                         Forms\Components\TextInput::make('phone')->tel()->maxLength(255),
-                        Forms\Components\TextInput::make('route')->label('Route')->maxLength(255),
+                        Forms\Components\TextInput::make('route')->label('Route(s)')->maxLength(255),
+                        Forms\Components\DateTimePicker::make('travel_at')
+                            ->label('Travel date & time')->seconds(false)->native(false),
                         Forms\Components\TextInput::make('subject')->maxLength(255),
                         Forms\Components\Textarea::make('message')->required()->rows(6)->columnSpanFull(),
                         Forms\Components\Toggle::make('is_read')->label('Mark as read'),
@@ -82,7 +84,10 @@ class ContactResource extends Resource
                             ->formatStateUsing(fn (Contact $r) => trim(($r->phone_country ? $r->phone_country.' ' : '').$r->phone))
                             ->copyable()->copyableState(fn (Contact $r) => trim(($r->phone_country ?? '').$r->phone))
                             ->icon('heroicon-m-phone')->placeholder('—'),
-                        Infolists\Components\TextEntry::make('route')->label('Route')->badge()->color('info')->placeholder('—'),
+                        Infolists\Components\TextEntry::make('route')->label('Route(s)')->badge()->color('info')
+                            ->separator(' | ')->placeholder('—'),
+                        Infolists\Components\TextEntry::make('travel_at')->label('Travel date & time')
+                            ->dateTime()->placeholder('—'),
                         Infolists\Components\TextEntry::make('source')->badge(),
                         Infolists\Components\TextEntry::make('booking.booking_no')
                             ->label('Converted to booking')->badge()->color('success')->placeholder('Not converted'),
@@ -111,8 +116,10 @@ class ContactResource extends Resource
                 Tables\Columns\TextColumn::make('phone')
                     ->formatStateUsing(fn (Contact $r) => trim(($r->phone_country ? $r->phone_country.' ' : '').$r->phone))
                     ->searchable(['phone', 'phone_country'])->toggleable(),
-                Tables\Columns\TextColumn::make('route')->label('Route')->badge()->color('info')
-                    ->searchable()->limit(30)->placeholder('—'),
+                Tables\Columns\TextColumn::make('route')->label('Route(s)')->badge()->color('info')
+                    ->separator(' | ')->searchable()->limit(30)->placeholder('—'),
+                Tables\Columns\TextColumn::make('travel_at')->label('Travel')->dateTime('d M Y, H:i')
+                    ->sortable()->placeholder('—')->toggleable(),
                 Tables\Columns\TextColumn::make('subject')->searchable()->limit(40)->placeholder('—')->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('source')->badge()->toggleable(),
                 Tables\Columns\TextColumn::make('booking.booking_no')
@@ -170,6 +177,7 @@ class ContactResource extends Resource
             ->modalSubmitActionLabel('Create booking')
             ->fillForm(fn (Contact $record) => [
                 'passengers' => 1,
+                'pickup_at' => $record->travel_at,
                 'notes' => $record->subject
                     ? $record->subject.' — '.$record->message
                     : $record->message,

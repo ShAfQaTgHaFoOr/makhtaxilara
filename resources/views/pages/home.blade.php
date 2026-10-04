@@ -670,7 +670,7 @@
                 <li><span class="checkmark">&#x2713;</span> {{ $item['label'] }}: {{ $item['price'] }}/-</li>
                 @endforeach
             </ul>
-            <a href="{{ route('contact') }}" class="more-packages-btn" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
+            <a href="{{ route('booking.create', ['route' => $route->name]) }}" class="more-packages-btn" data-booking-open data-route="{{ $route->name }}" style="text-decoration: none; display: inline-block; text-align: center;">BOOK NOW</a>
         </div>
     </div>
 @empty
@@ -1100,4 +1100,6 @@
         </form>
     </div>
 </section>
+
+@include('partials.booking-modal', ['vehicles' => $vehicles])
 @endsection

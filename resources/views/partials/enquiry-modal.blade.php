@@ -1,7 +1,8 @@
 {{-- Site-wide auto-opening enquiry dialog --}}
 @php
     $enquiryHasErrors = $errors->has('name') || $errors->has('phone') || $errors->has('email')
-        || $errors->has('message') || $errors->has('route') || $errors->has('route_other') || $errors->has('phone_country');
+        || $errors->has('message') || $errors->has('phone_country') || $errors->has('travel_at')
+        || $errors->hasAny(['routes', 'routes.*', 'routes_other.*']);
     $enquiryDone = (bool) session('enquiry_status');
 
     // Routes offered in the enquiry dropdown (active route packages).
@@ -25,6 +26,14 @@
         '+234' => '🇳🇬 +234',
     ];
     $enquiryCountryOld = old('phone_country', '+966');
+
+    // Repopulate route rows after a validation error; always show at least one row.
+    $enquiryOldRoutes = array_values((array) old('routes', ['']));
+    if (empty($enquiryOldRoutes)) {
+        $enquiryOldRoutes = [''];
+    }
+    $enquiryOldRouteOthers = array_values((array) old('routes_other', []));
+    $enquiryTravelOld = old('travel_at');
 @endphp
 <div id="mkt-enquiry-modal" class="mkt-modal" role="dialog" aria-modal="true" aria-labelledby="mkt-enquiry-title">
     <div class="mkt-modal__backdrop" data-enquiry-close></div>
@@ -62,19 +71,39 @@
                 @error('phone')<span class="mkt-modal__err">{{ $message }}</span>@enderror
             </div>
             <div style="margin-top:12px;">
-                <label class="mkt-modal__lbl">Route *</label>
-                <select name="route" id="mkt-enquiry-route" required class="mkt-modal__in">
-                    <option value="" @selected(! old('route'))>Select a route…</option>
-                    @foreach ($enquiryRoutes as $routeName)
-                        <option value="{{ $routeName }}" @selected(old('route') === $routeName)>{{ $routeName }}</option>
+                <label class="mkt-modal__lbl">Route(s) *</label>
+                <div id="mkt-enquiry-routes">
+                    @foreach ($enquiryOldRoutes as $i => $routeVal)
+                        @php $otherVal = $enquiryOldRouteOthers[$i] ?? ''; @endphp
+                        <div class="mkt-route-row" style="margin-bottom:8px;">
+                            <div style="display:flex;gap:6px;align-items:flex-start;">
+                                <select name="routes[]" required class="mkt-modal__in mkt-route-sel" style="flex:1 1 auto;min-width:0;">
+                                    <option value="" @selected(! $routeVal)>Select a route…</option>
+                                    @foreach ($enquiryRoutes as $routeName)
+                                        <option value="{{ $routeName }}" @selected($routeVal === $routeName)>{{ $routeName }}</option>
+                                    @endforeach
+                                    <option value="__other__" @selected($routeVal === '__other__')>Other — add your route</option>
+                                </select>
+                                <button type="button" class="mkt-route-del" aria-label="Remove route"
+                                        style="flex:0 0 auto;border:1px solid #c7d3ea;background:#f4f7fc;color:#8794ad;border-radius:8px;padding:0 12px;font-size:20px;line-height:1;cursor:pointer;{{ count($enquiryOldRoutes) > 1 ? '' : 'display:none;' }}">&times;</button>
+                            </div>
+                            <input name="routes_other[]" value="{{ $otherVal }}" class="mkt-modal__in mkt-route-other"
+                                   placeholder="e.g. Makkah Hotel to Madinah Hotel"
+                                   style="margin-top:6px;{{ $routeVal === '__other__' ? '' : 'display:none;' }}">
+                        </div>
                     @endforeach
-                    <option value="__other__" @selected(old('route') === '__other__')>Other — add your route</option>
-                </select>
-                @error('route')<span class="mkt-modal__err">{{ $message }}</span>@enderror
-                <input name="route_other" value="{{ old('route_other') }}" class="mkt-modal__in" id="mkt-enquiry-route-other"
-                       placeholder="e.g. Makkah Hotel to Madinah Hotel"
-                       style="margin-top:8px;{{ old('route') === '__other__' ? '' : 'display:none;' }}">
-                @error('route_other')<span class="mkt-modal__err">{{ $message }}</span>@enderror
+                </div>
+                <button type="button" id="mkt-enquiry-add-route"
+                        style="border:0;background:none;color:#16295c;font-weight:600;font-size:13px;cursor:pointer;padding:2px 0;">+ Add another route</button>
+                @error('routes')<span class="mkt-modal__err">{{ $message }}</span>@enderror
+                @error('routes.*')<span class="mkt-modal__err">{{ $message }}</span>@enderror
+                @error('routes_other.*')<span class="mkt-modal__err">{{ $message }}</span>@enderror
+            </div>
+            <div style="margin-top:12px;">
+                <label class="mkt-modal__lbl">Travel date &amp; time *</label>
+                <input type="datetime-local" name="travel_at" value="{{ $enquiryTravelOld }}" required
+                       min="{{ now()->format('Y-m-d\TH:i') }}" class="mkt-modal__in">
+                @error('travel_at')<span class="mkt-modal__err">{{ $message }}</span>@enderror
             </div>
             <div style="margin-top:12px;">
                 <label class="mkt-modal__lbl">Email (optional)</label>
@@ -124,18 +153,54 @@
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
         if (fab) fab.addEventListener('click', open);
 
-        // Reveal the free-text "add route" box when "Other" is chosen.
-        var routeSel = document.getElementById('mkt-enquiry-route');
-        var routeOther = document.getElementById('mkt-enquiry-route-other');
-        if (routeSel && routeOther) {
-            var syncRoute = function () {
-                var other = routeSel.value === '__other__';
-                routeOther.style.display = other ? '' : 'none';
-                routeOther.required = other;
-                if (!other) routeOther.value = '';
+        // Multi-route rows: per-row "Other" toggle, add/remove, add-button.
+        var routesWrap = document.getElementById('mkt-enquiry-routes');
+        var addRouteBtn = document.getElementById('mkt-enquiry-add-route');
+        if (routesWrap) {
+            var syncRow = function (row) {
+                var sel = row.querySelector('.mkt-route-sel');
+                var other = row.querySelector('.mkt-route-other');
+                if (!sel || !other) return;
+                var isOther = sel.value === '__other__';
+                other.style.display = isOther ? '' : 'none';
+                other.required = isOther;
+                if (!isOther) other.value = '';
             };
-            routeSel.addEventListener('change', syncRoute);
-            syncRoute();
+            var refreshDeleteButtons = function () {
+                var rows = routesWrap.querySelectorAll('.mkt-route-row');
+                rows.forEach(function (r) {
+                    var del = r.querySelector('.mkt-route-del');
+                    if (del) del.style.display = rows.length > 1 ? '' : 'none';
+                });
+            };
+            routesWrap.addEventListener('change', function (e) {
+                if (e.target.classList.contains('mkt-route-sel')) {
+                    syncRow(e.target.closest('.mkt-route-row'));
+                }
+            });
+            routesWrap.addEventListener('click', function (e) {
+                if (e.target.classList.contains('mkt-route-del')) {
+                    var row = e.target.closest('.mkt-route-row');
+                    if (routesWrap.querySelectorAll('.mkt-route-row').length > 1) {
+                        row.remove();
+                        refreshDeleteButtons();
+                    }
+                }
+            });
+            if (addRouteBtn) {
+                addRouteBtn.addEventListener('click', function () {
+                    var first = routesWrap.querySelector('.mkt-route-row');
+                    var clone = first.cloneNode(true);
+                    var sel = clone.querySelector('.mkt-route-sel');
+                    var other = clone.querySelector('.mkt-route-other');
+                    if (sel) sel.value = '';
+                    if (other) { other.value = ''; other.style.display = 'none'; other.required = false; }
+                    routesWrap.appendChild(clone);
+                    refreshDeleteButtons();
+                });
+            }
+            routesWrap.querySelectorAll('.mkt-route-row').forEach(syncRow);
+            refreshDeleteButtons();
         }
 
         var forceOpen = @json($enquiryHasErrors);

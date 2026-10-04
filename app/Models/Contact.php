@@ -10,6 +10,7 @@ class Contact extends Model
 
     protected $casts = [
         'is_read' => 'boolean',
+        'travel_at' => 'datetime',
     ];
 
     /** The booking this query was converted into, if any. */

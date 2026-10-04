@@ -89,23 +89,45 @@ class PageController extends Controller
             'phone_country' => ['required', 'string', 'max:8'],
             'phone' => ['required', 'string', 'max:40'],
             'email' => ['nullable', 'email', 'max:160'],
-            'route' => ['required', 'string', 'max:160'],
-            'route_other' => ['nullable', 'required_if:route,__other__', 'string', 'max:160'],
+            'routes' => ['required', 'array', 'min:1'],
+            'routes.*' => ['required', 'string', 'max:160'],
+            'routes_other' => ['nullable', 'array'],
+            'routes_other.*' => ['nullable', 'string', 'max:160'],
+            'travel_at' => ['required', 'date'],
             'message' => ['required', 'string', 'max:5000'],
         ]);
 
-        // Resolve the chosen route (free-text "Other" overrides the dropdown value).
-        $route = $data['route'] === '__other__'
-            ? trim($data['route_other'])
-            : $data['route'];
+        // Resolve each chosen route (free-text "Other" overrides the dropdown value),
+        // preserving order and dropping any that resolve to empty.
+        $routesOther = $data['routes_other'] ?? [];
+        $routes = [];
+        foreach ($data['routes'] as $i => $choice) {
+            $resolved = $choice === '__other__'
+                ? trim($routesOther[$i] ?? '')
+                : trim($choice);
+            if ($resolved !== '') {
+                $routes[] = $resolved;
+            }
+        }
+        $routes = array_values(array_unique($routes));
+
+        if (empty($routes)) {
+            return back()
+                ->withErrors(['routes' => 'Please select or enter at least one route.'])
+                ->withInput()
+                ->withFragment('enquiry');
+        }
+
+        $routeLabel = implode(' | ', $routes);
 
         Contact::create([
             'name' => $data['name'],
             'phone_country' => $data['phone_country'],
             'phone' => ltrim($data['phone'], '0'),
             'email' => $data['email'] ?? null,
-            'route' => $route,
-            'subject' => 'Route enquiry: '.$route,
+            'route' => $routeLabel,
+            'travel_at' => $data['travel_at'],
+            'subject' => 'Route enquiry: '.$routeLabel,
             'message' => $data['message'],
             'source' => 'enquiry',
         ]);
