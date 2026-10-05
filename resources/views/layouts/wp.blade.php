@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name='robots' content='max-image-preview:large' />
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
-	
+
 @endverbatim
 <title>@yield('title', 'Makhah Taxi | Premium Cab & Airport Transfers')</title>
 @verbatim
@@ -158,6 +158,24 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 <link rel="stylesheet" href="/assets/site.css?v=2">
 @stack('styles')
 @verbatim
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2292017601653655');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2292017601653655&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 
 <body class="home blog wp-embed-responsive wp-theme-vw-taxi-booking">
@@ -193,7 +211,7 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 <div class="wp-block-group bottom-header is-layout-constrained wp-block-group-is-layout-constrained" style="margin-top:14px;margin-bottom:0px">
 <div class="wp-block-columns header-inner-section has-background-background-color has-background is-layout-flex wp-container-core-columns-is-layout-35c3382a wp-block-columns-is-layout-flex" style="border-radius:8px;padding-top:5px;padding-right:5px;padding-bottom:5px;padding-left:5px">
 <div class="wp-block-column is-vertically-aligned-center header-left-box is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:44%">
-<div class="wp-block-group header-left-inner is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-cb46ffcb wp-block-group-is-layout-flex"><form role="search" method="get" action="/" class="wp-block-search__button-only wp-block-search__searchfield-hidden wp-block-search__icon-button header-search wp-block-search" 
+<div class="wp-block-group header-left-inner is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-cb46ffcb wp-block-group-is-layout-flex"><form role="search" method="get" action="/" class="wp-block-search__button-only wp-block-search__searchfield-hidden wp-block-search__icon-button header-search wp-block-search"
 		 data-wp-interactive="core/search"
 		 data-wp-context='{"isSearchInputVisible":false,"inputId":"wp-block-search__input-1","ariaLabelExpanded":"Submit Search","ariaLabelCollapsed":"Expand search field"}'
 		 data-wp-class--wp-block-search__searchfield-hidden="!context.isSearchInputVisible"
@@ -203,12 +221,12 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 					<path d="M13 5c-3.3 0-6 2.7-6 6 0 1.4.5 2.7 1.3 3.7l-3.8 3.8 1.1 1.1 3.8-3.8c1 .8 2.3 1.3 3.7 1.3 3.3 0 6-2.7 6-6S16.3 5 13 5zm0 10.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5 4.5 2 4.5 4.5-2 4.5-4.5 4.5z"></path>
 				</svg></button></div></form>
 
-<nav style="font-size:15px;font-style:normal;font-weight:500;line-height:1.5;text-transform:capitalize;" class="has-text-color has-secondary-color is-responsive items-justified-right top-menus wp-block-navigation has-inter-font-family is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-is-layout-5f3a1aef wp-block-navigation-is-layout-flex" aria-label="Header menu 2" 
-		 data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" 
+<nav style="font-size:15px;font-style:normal;font-weight:500;line-height:1.5;text-transform:capitalize;" class="has-text-color has-secondary-color is-responsive items-justified-right top-menus wp-block-navigation has-inter-font-family is-horizontal is-content-justification-right is-layout-flex wp-container-core-navigation-is-layout-5f3a1aef wp-block-navigation-is-layout-flex" aria-label="Header menu 2"
+		 data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open"
 				data-wp-on-async--click="actions.openMenuOnClick"
 				data-wp-on--keydown="actions.handleMenuKeydown"
 			><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5" /><rect x="4" y="15" width="16" height="1.5" /></svg></button>
-				<div class="wp-block-navigation__responsive-container  has-text-color has-background-color has-background has-primary-background-color"  id="modal-2" 
+				<div class="wp-block-navigation__responsive-container  has-text-color has-background-color has-background has-primary-background-color"  id="modal-2"
 				data-wp-class--has-modal-open="state.isMenuOpen"
 				data-wp-class--is-menu-open="state.isMenuOpen"
 				data-wp-watch="callbacks.initMenu"
@@ -217,15 +235,15 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 				tabindex="-1"
 			>
 					<div class="wp-block-navigation__responsive-close" tabindex="-1">
-						<div class="wp-block-navigation__responsive-dialog" 
+						<div class="wp-block-navigation__responsive-dialog"
 				data-wp-bind--aria-modal="state.ariaModal"
 				data-wp-bind--aria-label="state.ariaLabel"
 				data-wp-bind--role="state.roleAttribute"
 			>
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" 
+							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close"
 				data-wp-on-async--click="actions.closeMenuOnClick"
 			><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
-							<div class="wp-block-navigation__responsive-container-content" 
+							<div class="wp-block-navigation__responsive-container-content"
 				data-wp-watch="callbacks.focusFirstElement"
 			 id="modal-2-content">
 								<ul style="font-size:15px;font-style:normal;font-weight:500;line-height:1.5;text-transform:capitalize;" class="wp-block-navigation__container has-text-color has-secondary-color is-responsive items-justified-right top-menus wp-block-navigation has-inter-font-family"><li style="font-size: 15px;" class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/"><span class="wp-block-navigation-item__label">Home</span></a></li><li style="font-size: 15px;" class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/about-us"><span class="wp-block-navigation-item__label">About Us</span></a></li></ul>
@@ -244,12 +262,12 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 
 
 <div class="wp-block-column is-vertically-aligned-center header-right-box has-inter-font-family is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:44%">
-<div class="wp-block-group header-right-inner is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-cb46ffcb wp-block-group-is-layout-flex"><nav style="font-size:15px;font-style:normal;font-weight:500;line-height:1.5;text-transform:capitalize;" class="has-text-color has-secondary-color is-responsive items-justified-left top-menus wp-block-navigation has-inter-font-family is-horizontal is-content-justification-left is-layout-flex wp-container-core-navigation-is-layout-204595d6 wp-block-navigation-is-layout-flex" aria-label="Header menu 3" 
-		 data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open" 
+<div class="wp-block-group header-right-inner is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-cb46ffcb wp-block-group-is-layout-flex"><nav style="font-size:15px;font-style:normal;font-weight:500;line-height:1.5;text-transform:capitalize;" class="has-text-color has-secondary-color is-responsive items-justified-left top-menus wp-block-navigation has-inter-font-family is-horizontal is-content-justification-left is-layout-flex wp-container-core-navigation-is-layout-204595d6 wp-block-navigation-is-layout-flex" aria-label="Header menu 3"
+		 data-wp-interactive="core/navigation" data-wp-context='{"overlayOpenedBy":{"click":false,"hover":false,"focus":false},"type":"overlay","roleAttribute":"","ariaLabel":"Menu"}'><button aria-haspopup="dialog" aria-label="Open menu" class="wp-block-navigation__responsive-container-open"
 				data-wp-on-async--click="actions.openMenuOnClick"
 				data-wp-on--keydown="actions.handleMenuKeydown"
 			><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="7.5" width="16" height="1.5" /><rect x="4" y="15" width="16" height="1.5" /></svg></button>
-				<div class="wp-block-navigation__responsive-container  has-text-color has-background-color has-background has-primary-background-color"  id="modal-3" 
+				<div class="wp-block-navigation__responsive-container  has-text-color has-background-color has-background has-primary-background-color"  id="modal-3"
 				data-wp-class--has-modal-open="state.isMenuOpen"
 				data-wp-class--is-menu-open="state.isMenuOpen"
 				data-wp-watch="callbacks.initMenu"
@@ -258,15 +276,15 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 				tabindex="-1"
 			>
 					<div class="wp-block-navigation__responsive-close" tabindex="-1">
-						<div class="wp-block-navigation__responsive-dialog" 
+						<div class="wp-block-navigation__responsive-dialog"
 				data-wp-bind--aria-modal="state.ariaModal"
 				data-wp-bind--aria-label="state.ariaLabel"
 				data-wp-bind--role="state.roleAttribute"
 			>
-							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close" 
+							<button aria-label="Close menu" class="wp-block-navigation__responsive-container-close"
 				data-wp-on-async--click="actions.closeMenuOnClick"
 			><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m13.06 12 6.47-6.47-1.06-1.06L12 10.94 5.53 4.47 4.47 5.53 10.94 12l-6.47 6.47 1.06 1.06L12 13.06l6.47 6.47 1.06-1.06L13.06 12Z"></path></svg></button>
-							<div class="wp-block-navigation__responsive-container-content" 
+							<div class="wp-block-navigation__responsive-container-content"
 				data-wp-watch="callbacks.focusFirstElement"
 			 id="modal-3-content">
 								<ul style="font-size:15px;font-style:normal;font-weight:500;line-height:1.5;text-transform:capitalize;" class="wp-block-navigation__container has-text-color has-secondary-color is-responsive items-justified-left top-menus wp-block-navigation has-inter-font-family"><li style="font-size: 15px;" class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/our-taxis"><span class="wp-block-navigation-item__label">Taxis</span></a></li><li style="font-size: 15px;" class=" wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="/contact-us"><span class="wp-block-navigation-item__label">Contact Us</span></a></li></ul>
@@ -501,7 +519,7 @@ ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:
 		// Inject the skip link.
 		sibling.parentElement.insertBefore( skipLink, sibling );
 	}() );
-	
+
 </script>
 <script src="/wp-content/themes/vw-taxi-booking/js/owl.carousel.js?ver=6.8.3" id="owl.carousel-js-js"></script>
 <script src="/wp-content/themes/vw-taxi-booking/js/custom.js?ver=6.8.3" id="vw-taxi-booking-custom-scripts-js"></script>
